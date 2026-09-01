@@ -1,0 +1,2 @@
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../components/Card';
+export type { CardProps, CardTone, CardVariant } from '../components/Card';

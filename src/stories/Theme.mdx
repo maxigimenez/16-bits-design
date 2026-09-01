@@ -1,0 +1,197 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as ThemeStories from './Theme.stories';
+
+<Meta of={ThemeStories} />
+
+# Theming
+
+16 Bits Design uses CSS custom properties as its theme API. Components read semantic
+tokens such as `--bits-primary` and `--bits-surface`, so a theme can be selected or
+customized without rebuilding the library.
+
+## Set up the theme
+
+Import the stylesheet once at your application entry point:
+
+```tsx
+import '@16-bits-design/ui/styles.css';
+```
+
+The stylesheet includes the fonts, component styles, token defaults, and both built-in
+themes. Ember is the default theme, so no variables or provider are required for it.
+
+## Use a built-in theme
+
+Apply `data-bits-theme` to an element that contains the components:
+
+```tsx
+<main data-bits-theme="ocean">
+  <Button>Continue</Button>
+</main>
+```
+
+For React applications, `ThemeProvider` is recommended when a theme contains dialogs
+or toasts. It scopes the theme and supplies a correctly themed portal container:
+
+```tsx
+import { ThemeProvider } from '@16-bits-design/ui/theme';
+import { Button } from '@16-bits-design/ui/button';
+
+export function App() {
+  return (
+    <ThemeProvider theme="ocean">
+      <Button>Continue</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+The built-in theme names are `ember` and `ocean`.
+
+<Canvas of={ThemeStories.BuiltInThemes} />
+
+## Create a custom theme
+
+Start with the semantic color tokens. Because Ember provides complete values at
+`:root`, a custom theme may override only the tokens that differ. For a portable,
+complete color theme, define every token in the color table below.
+
+```css
+.brand-theme {
+  --bits-surface: #101025;
+  --bits-panel: #18183a;
+  --bits-raised: #202052;
+  --bits-muted: #292963;
+  --bits-line: #42428a;
+  --bits-line-strong: #6868bd;
+
+  --bits-ink: #101025;
+  --bits-primary: #8f8fff;
+  --bits-primary-soft: #c2c2ff;
+  --bits-primary-shadow: #35357e;
+
+  --bits-text: #f4f4ff;
+  --bits-text-soft: #cccced;
+  --bits-text-muted: #9696bd;
+  --bits-text-faint: #707095;
+
+  --bits-amber: #ffc857;
+  --bits-success: #52e6a0;
+  --bits-danger: #f05d5e;
+  --bits-danger-soft: #ff9b9c;
+  --bits-danger-shadow: #7a1a2d;
+
+  --bits-shadow: rgb(0 0 0 / 50%);
+  --bits-backdrop: rgb(8 7 20 / 72%);
+}
+```
+
+Then apply the class to the provider. A custom `theme` name is optional, but useful as
+a stable selector or application state value:
+
+```tsx
+<ThemeProvider theme="brand" className="brand-theme">
+  <App />
+</ThemeProvider>
+```
+
+<Canvas of={ThemeStories.CustomColors} />
+
+## Color tokens
+
+<table>
+  <thead>
+    <tr><th>Variable</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--bits-surface</code></td><td>Application and theme-root background</td></tr>
+    <tr><td><code>--bits-panel</code></td><td>Panels and secondary surfaces</td></tr>
+    <tr><td><code>--bits-raised</code></td><td>Cards, inputs, and raised surfaces</td></tr>
+    <tr><td><code>--bits-muted</code></td><td>Muted fills, code, and subtle controls</td></tr>
+    <tr><td><code>--bits-line</code></td><td>Default borders and dividers</td></tr>
+    <tr><td><code>--bits-line-strong</code></td><td>Emphasized borders</td></tr>
+    <tr><td><code>--bits-ink</code></td><td>Text placed on bright brand fills</td></tr>
+    <tr><td><code>--bits-primary</code></td><td>Primary actions, links, accents, and focus</td></tr>
+    <tr><td><code>--bits-primary-soft</code></td><td>Softer brand emphasis and hover color</td></tr>
+    <tr><td><code>--bits-primary-shadow</code></td><td>Pressed and dimensional primary shadow</td></tr>
+    <tr><td><code>--bits-amber</code></td><td>Warning and caution state</td></tr>
+    <tr><td><code>--bits-success</code></td><td>Success state</td></tr>
+    <tr><td><code>--bits-danger</code></td><td>Destructive actions and error state</td></tr>
+    <tr><td><code>--bits-danger-soft</code></td><td>Softer destructive emphasis</td></tr>
+    <tr><td><code>--bits-danger-shadow</code></td><td>Pressed and dimensional danger shadow</td></tr>
+    <tr><td><code>--bits-text</code></td><td>Primary text</td></tr>
+    <tr><td><code>--bits-text-soft</code></td><td>Secondary readable text</td></tr>
+    <tr><td><code>--bits-text-muted</code></td><td>Supporting and placeholder text</td></tr>
+    <tr><td><code>--bits-text-faint</code></td><td>Lowest-emphasis decorative text</td></tr>
+    <tr><td><code>--bits-shadow</code></td><td>General component shadow color</td></tr>
+    <tr><td><code>--bits-backdrop</code></td><td>Dialog and overlay backdrop</td></tr>
+  </tbody>
+</table>
+
+Keep text/background and interactive-state combinations accessible. In particular,
+check `--bits-ink` on `--bits-primary`, all text levels on surfaces, and focus rings.
+
+## Typography tokens
+
+Typography already has library defaults. Override these only when the product needs a
+different type system.
+
+<table>
+  <thead>
+    <tr><th>Variable</th><th>Default</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--bits-font-body</code></td><td>JetBrains Mono with system monospace fallbacks</td></tr>
+    <tr><td><code>--bits-font-display</code></td><td>Silkscreen with monospace fallbacks</td></tr>
+    <tr><td><code>--bits-font-size-display</code></td><td><code>24px</code></td></tr>
+    <tr><td><code>--bits-font-size-h2</code></td><td><code>18px</code></td></tr>
+    <tr><td><code>--bits-font-size-h3</code></td><td><code>15px</code></td></tr>
+    <tr><td><code>--bits-font-size-h4</code></td><td><code>13px</code></td></tr>
+    <tr><td><code>--bits-font-size-h5</code></td><td><code>11px</code></td></tr>
+    <tr><td><code>--bits-font-size-h6</code></td><td><code>9px</code></td></tr>
+    <tr><td><code>--bits-font-size-body</code></td><td><code>12px</code></td></tr>
+    <tr><td><code>--bits-font-size-small</code></td><td><code>11px</code></td></tr>
+    <tr><td><code>--bits-font-size-caption</code></td><td><code>10px</code></td></tr>
+    <tr><td><code>--bits-font-size-label</code></td><td><code>9px</code></td></tr>
+  </tbody>
+</table>
+
+## Spacing and structure tokens
+
+<table>
+  <thead>
+    <tr><th>Variable</th><th>Default</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--bits-space-1</code></td><td><code>4px</code></td><td>Smallest spacing step</td></tr>
+    <tr><td><code>--bits-space-2</code></td><td><code>8px</code></td><td>Compact spacing</td></tr>
+    <tr><td><code>--bits-space-3</code></td><td><code>12px</code></td><td>Default control spacing</td></tr>
+    <tr><td><code>--bits-space-4</code></td><td><code>16px</code></td><td>Standard layout spacing</td></tr>
+    <tr><td><code>--bits-space-5</code></td><td><code>20px</code></td><td>Large layout spacing</td></tr>
+    <tr><td><code>--bits-space-6</code></td><td><code>24px</code></td><td>Largest base spacing step</td></tr>
+    <tr><td><code>--bits-border-width</code></td><td><code>2px</code></td><td>Component border width</td></tr>
+    <tr><td><code>--bits-focus-ring</code></td><td>Two-layer ring</td><td>Keyboard focus treatment</td></tr>
+  </tbody>
+</table>
+
+`--bits-focus-ring` may reference other theme variables. The default uses
+`--bits-surface` and `--bits-primary`, so it updates automatically with the theme.
+
+## Scope more than one theme
+
+Themes are inherited through the DOM, which allows multiple independently themed
+regions on one page:
+
+```tsx
+<ThemeProvider theme="ember">
+  <Workspace />
+</ThemeProvider>
+
+<ThemeProvider theme="ocean">
+  <PreviewPanel />
+</ThemeProvider>
+```
+
+Avoid setting tokens directly on individual components. Put overrides on a theme
+container so components, nested content, focus states, and portals share one coherent
+token set.

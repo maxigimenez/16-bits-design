@@ -1,0 +1,28 @@
+import { defineConfig } from 'tsup';
+
+export default defineConfig({
+  entry: {
+    index: 'src/index.ts',
+    avatar: 'src/entries/avatar.ts',
+    badge: 'src/entries/badge.ts',
+    button: 'src/entries/button.ts',
+    card: 'src/entries/card.ts',
+    dialog: 'src/entries/dialog.ts',
+    input: 'src/entries/input.ts',
+    meter: 'src/entries/meter.ts',
+    select: 'src/entries/select.ts',
+    textarea: 'src/entries/textarea.ts',
+    theme: 'src/entries/theme.ts',
+    toast: 'src/entries/toast.ts',
+    toggle: 'src/entries/toggle.ts',
+    typography: 'src/entries/typography.ts',
+  },
+  outDir: 'dist',
+  format: ['esm', 'cjs'],
+  dts: true,
+  sourcemap: true,
+  clean: true,
+  external: ['react', 'react-dom', /^@16-bits-design\/ui(?:\/.*)?$/],
+  splitting: false,
+  treeshake: true,
+});

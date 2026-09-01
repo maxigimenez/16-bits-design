@@ -1,0 +1,34 @@
+html, body, #storybook-root { min-height: 100%; }
+body { margin: 0; background: var(--bits-surface); color: var(--bits-text); }
+.story-shell { min-height: 100vh; padding: 32px; background: var(--bits-surface); color: var(--bits-text); font-family: var(--bits-font-body); }
+.story-shell[data-canvas-background='panel'] { background: var(--bits-panel); }
+.story-shell[data-canvas-background='raised'] { background: var(--bits-raised); }
+.story-section { display: flex; flex-direction: column; gap: 14px; padding: 18px; border: 2px solid var(--bits-line); background: var(--bits-raised); }
+.story-section + .story-section { margin-top: 2px; }
+.story-label { margin: 0; color: var(--bits-text-muted); font: 400 9px/1.4 var(--bits-font-body); letter-spacing: .2em; text-transform: uppercase; }
+.story-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.story-stack { display: flex; flex-direction: column; gap: 12px; }
+.story-caption { color: var(--bits-text-soft); font: 400 9px/1.5 var(--bits-font-body); }
+.story-swatch { display: flex; flex-direction: column; gap: 7px; }
+.story-swatch__color { height: 44px; border: 2px solid var(--bits-line); }
+.story-swatch__name { color: var(--bits-text-soft); font-size: 9px; }
+.story-swatch__hex { color: var(--bits-text-soft); font-size: 9px; }
+.story-heading { margin: 0; font: 400 24px/1 var(--bits-font-display); }
+.story-subheading { margin: 0; font: 400 13px/1 var(--bits-font-display); }
+.story-body { margin: 0; font-size: 12px; }
+.story-card { display: flex; flex-direction: column; gap: 8px; min-width: 180px; }
+.story-theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); min-height: 360px; }
+.story-theme-preview { padding: 32px; background: var(--bits-surface); }
+.story-custom-theme {
+  --bits-surface: #101025;
+  --bits-panel: #18183a;
+  --bits-raised: #202052;
+  --bits-muted: #292963;
+  --bits-line: #42428a;
+  --bits-line-strong: #6868bd;
+  --bits-primary: #8f8fff;
+  --bits-primary-soft: #c2c2ff;
+  --bits-primary-shadow: #35357e;
+}
+@media (max-width: 600px) { .story-shell { padding: 16px; } }

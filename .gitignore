@@ -1,0 +1,30 @@
+# Dependencies and package-manager state
+node_modules/
+.pnpm-store/
+
+# Generated packages, documentation, and test output
+dist/
+storybook-static/
+coverage/
+test-results/
+playwright-report/
+*.tgz
+*.tsbuildinfo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
