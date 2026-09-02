@@ -322,6 +322,22 @@
 .bits-badge--danger { background: var(--bits-danger); }
 .bits-badge--outline { border: var(--bits-border-width) solid currentColor; background: transparent; color: var(--bits-text-muted); }
 
+.bits-alert { --bits-alert-tone: var(--bits-primary); display: flex; align-items: flex-start; gap: var(--bits-space-3); width: 100%; padding: var(--bits-space-3); border: var(--bits-border-width) solid var(--bits-alert-tone); background: var(--bits-raised); color: var(--bits-text); font-family: var(--bits-font-body); }
+.bits-alert__icon { display: flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; background: var(--bits-alert-tone); color: var(--bits-ink); font: 400 10px/1 var(--bits-font-display); }
+.bits-alert__content { display: flex; align-items: center; justify-content: space-between; gap: var(--bits-space-4); flex: 1; min-width: 0; }
+.bits-alert__copy { display: flex; flex-direction: column; gap: var(--bits-space-1); min-width: 0; }
+.bits-alert__title { color: var(--bits-text); font-size: var(--bits-font-size-small); font-weight: 700; line-height: 1.45; }
+.bits-alert__message { max-width: 68ch; color: var(--bits-text-muted); font-size: var(--bits-font-size-caption); line-height: 1.6; overflow-wrap: anywhere; }
+.bits-alert__action { flex: none; }
+.bits-alert--info { --bits-alert-tone: var(--bits-primary); }
+.bits-alert--warning { --bits-alert-tone: var(--bits-amber); }
+.bits-alert--success { --bits-alert-tone: var(--bits-success); }
+.bits-alert--danger { --bits-alert-tone: var(--bits-danger); }
+@media (max-width: 480px) {
+  .bits-alert__content { align-items: flex-start; flex-direction: column; }
+  .bits-alert__action { width: 100%; }
+}
+
 .bits-card { position: relative; overflow: hidden; border: var(--bits-border-width) solid var(--bits-line); border-radius: 0; color: var(--bits-text); font-family: var(--bits-font-body); }
 .bits-card--panel { background: var(--bits-panel); }
 .bits-card--raised { background: var(--bits-raised); box-shadow: 6px 6px 0 var(--bits-shadow); }

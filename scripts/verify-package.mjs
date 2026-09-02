@@ -18,19 +18,21 @@ for (const target of Object.values(manifest.exports)) {
 }
 
 const esm = await import('@16-bits-design/ui');
+const esmAlert = await import('@16-bits-design/ui/alert');
 const esmCard = await import('@16-bits-design/ui/card');
 const esmTheme = await import('@16-bits-design/ui/theme');
 
-if (esm.Card !== esmCard.Card || esm.ThemeProvider !== esmTheme.ThemeProvider) {
+if (esm.Alert !== esmAlert.Alert || esm.Card !== esmCard.Card || esm.ThemeProvider !== esmTheme.ThemeProvider) {
   throw new Error('ESM root exports do not resolve to the public component subpaths.');
 }
 
 const require = createRequire(import.meta.url);
 const cjs = require('@16-bits-design/ui');
+const cjsAlert = require('@16-bits-design/ui/alert');
 const cjsCard = require('@16-bits-design/ui/card');
 const cjsTheme = require('@16-bits-design/ui/theme');
 
-if (cjs.Card !== cjsCard.Card || cjs.ThemeProvider !== cjsTheme.ThemeProvider) {
+if (cjs.Alert !== cjsAlert.Alert || cjs.Card !== cjsCard.Card || cjs.ThemeProvider !== cjsTheme.ThemeProvider) {
   throw new Error('CommonJS root exports do not resolve to the public component subpaths.');
 }
 

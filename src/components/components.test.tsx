@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import { Alert } from './Alert';
 import { Avatar } from './Avatar';
 import { Badge } from './Badge';
 import { Button } from './Button';
@@ -50,6 +51,19 @@ describe('form controls', () => {
 });
 
 describe('display components', () => {
+  it('announces danger alerts assertively and advisory alerts politely', () => {
+    const { rerender } = render(<Alert tone="danger" title="Request failed">Try again.</Alert>);
+    expect(screen.getByRole('alert')).toHaveTextContent('Request failedTry again.');
+
+    rerender(<Alert tone="warning" title="Limit approaching">Review usage.</Alert>);
+    expect(screen.getByRole('status')).toHaveTextContent('Limit approachingReview usage.');
+  });
+
+  it('renders an explicit alert recovery action', () => {
+    render(<Alert tone="danger" title="Request failed" action={<button>Retry request</button>}>Try again.</Alert>);
+    expect(screen.getByRole('button', { name: 'Retry request' })).toBeEnabled();
+  });
+
   it('exposes only live Ember and Ocean theme tokens', () => {
     expect(builtInThemes).toEqual(['ember', 'ocean']);
     expect(colors.primary).toBe('var(--bits-primary)');
