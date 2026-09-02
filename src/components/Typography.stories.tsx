@@ -48,3 +48,15 @@ export const NativeElements: Story = {
     </div>
   ),
 };
+
+export const ConsumerOverrides: Story = {
+  render: () => (
+    <div className="story-stack">
+      <h2 className="story-consumer-heading">A single consumer class controls this heading</h2>
+      <a className="story-consumer-link" href="#consumer-override">A consumer-styled link</a>
+      <Text size="caption" tone="muted">
+        Theme defaults stay underneath application classes without !important.
+      </Text>
+    </div>
+  ),
+};

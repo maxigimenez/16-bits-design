@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import { readFileSync } from 'node:fs';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { Alert } from './Alert';
@@ -20,6 +21,8 @@ import { Toggle } from './Toggle';
 import { Heading, Text } from './Typography';
 import { builtInThemes, ThemeProvider } from '../theme';
 import { colors } from '../tokens';
+
+const stylesheet = readFileSync('src/styles.css', 'utf8');
 
 describe('Button', () => {
   it('prevents interaction and announces progress while loading', () => {
@@ -91,6 +94,12 @@ describe('form controls', () => {
 });
 
 describe('display components', () => {
+  it('keeps themed element defaults below consumer class specificity', () => {
+    expect(stylesheet).toContain('.bits-theme :where(h1)');
+    expect(stylesheet).toContain('.bits-theme :where(a:hover)');
+    expect(stylesheet).not.toMatch(/\.bits-theme\s+(?:a|blockquote|code|em|h[1-6]|ol|p|small|strong|ul)(?:\b|:)/);
+  });
+
   it('contains block code in a named keyboard-scrollable region', () => {
     render(<Code label="Route definition">{'{\n  "method": "GET"\n}'}</Code>);
     const region = screen.getByRole('region', { name: 'Route definition' });

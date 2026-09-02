@@ -185,6 +185,10 @@ Built-in themes are `ember` (the warm, orange original) and `ocean` (blue/cyan).
 
 The public variables cover surfaces, borders, text, semantic colors, shadows and backdrops, typography, font sizes, spacing, border width, and focus rings. Every public variable is prefixed with `--bits-`.
 
+The theme's bare-element typography and link rules are low-specificity defaults built
+with `:where()`. A single application class can therefore override them without selector
+duplication or `!important`.
+
 The styling is fully custom CSS built on namespaced classes and CSS custom properties. It has no Tailwind dependency, CSS-in-JS runtime, or consumer build-plugin requirement.
 
 ## Development
