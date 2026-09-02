@@ -11,6 +11,7 @@ export default defineConfig({
     input: 'src/entries/input.ts',
     meter: 'src/entries/meter.ts',
     select: 'src/entries/select.ts',
+    segmented: 'src/entries/segmented.ts',
     textarea: 'src/entries/textarea.ts',
     theme: 'src/entries/theme.ts',
     toast: 'src/entries/toast.ts',

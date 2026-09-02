@@ -22,6 +22,9 @@ export type { MeterProps, MeterTone } from '@16-bits-design/ui/meter';
 export { Select } from '@16-bits-design/ui/select';
 export type { SelectOption, SelectProps } from '@16-bits-design/ui/select';
 
+export { Segmented } from '@16-bits-design/ui/segmented';
+export type { SegmentedOption, SegmentedProps } from '@16-bits-design/ui/segmented';
+
 export { Textarea } from '@16-bits-design/ui/textarea';
 export type { TextareaProps } from '@16-bits-design/ui/textarea';
 

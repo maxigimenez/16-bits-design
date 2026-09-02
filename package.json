@@ -68,6 +68,11 @@
       "import": "./dist/select.js",
       "require": "./dist/select.cjs"
     },
+    "./segmented": {
+      "types": "./dist/segmented.d.ts",
+      "import": "./dist/segmented.js",
+      "require": "./dist/segmented.cjs"
+    },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
       "import": "./dist/textarea.js",
