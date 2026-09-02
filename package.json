@@ -48,6 +48,11 @@
       "import": "./dist/card.js",
       "require": "./dist/card.cjs"
     },
+    "./code": {
+      "types": "./dist/code.d.ts",
+      "import": "./dist/code.js",
+      "require": "./dist/code.cjs"
+    },
     "./dialog": {
       "types": "./dist/dialog.d.ts",
       "import": "./dist/dialog.js",

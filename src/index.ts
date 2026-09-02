@@ -10,6 +10,9 @@ export type { ButtonProps, ButtonSize, ButtonVariant } from '@16-bits-design/ui/
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@16-bits-design/ui/card';
 export type { CardProps, CardTone, CardVariant } from '@16-bits-design/ui/card';
 
+export { Code } from '@16-bits-design/ui/code';
+export type { CodeBlockProps, CodeInlineProps, CodeProps, CodeVariant } from '@16-bits-design/ui/code';
+
 export { Dialog } from '@16-bits-design/ui/dialog';
 export type { DialogProps, DialogTone } from '@16-bits-design/ui/dialog';
 

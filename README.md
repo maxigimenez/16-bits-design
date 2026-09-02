@@ -45,6 +45,7 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/badge`
 - `@16-bits-design/ui/button`
 - `@16-bits-design/ui/card`
+- `@16-bits-design/ui/code`
 - `@16-bits-design/ui/dialog`
 - `@16-bits-design/ui/input`
 - `@16-bits-design/ui/meter`
@@ -55,6 +56,18 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/toggle`
 - `@16-bits-design/ui/typography`
 - `@16-bits-design/ui/styles.css`
+
+### Code
+
+Use block `Code` for logs, JSON, prompts, and other preformatted machine text. The required label names its keyboard-focusable horizontal scroll region so long lines remain inside the component. Use the inline variant for identifiers and short fragments.
+
+```tsx
+import { Code } from '@16-bits-design/ui/code';
+
+<Code label="Route definition">{JSON.stringify(route, null, 2)}</Code>
+
+<p>Deployment <Code variant="inline">dpl_8f32c1</Code> is ready.</p>
+```
 
 ## Theming
 

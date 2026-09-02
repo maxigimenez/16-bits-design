@@ -7,6 +7,7 @@ export default defineConfig({
     badge: 'src/entries/badge.ts',
     button: 'src/entries/button.ts',
     card: 'src/entries/card.ts',
+    code: 'src/entries/code.ts',
     dialog: 'src/entries/dialog.ts',
     input: 'src/entries/input.ts',
     meter: 'src/entries/meter.ts',

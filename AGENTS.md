@@ -176,6 +176,16 @@ Use `Card` with `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, and
 - Put actions in `CardFooter` when they affect the whole card.
 - Do not make an entire card clickable when a clear link or button is more accessible.
 
+### Code
+
+Use block `Code` for preformatted machine text and inline `Code` for short identifiers or fragments.
+
+- Always provide `label` for block code; it names the keyboard-focusable scroll region.
+- Preserve whitespace in logs, JSON, prompts, and configuration instead of manually inserting line breaks.
+- Let long lines scroll inside the block; do not enable wrapping that changes machine text.
+- Use the inline variant inside prose and compact cells, not for multiline content.
+- Never add syntax color that hardcodes palette values or makes meaning depend on color alone.
+
 ### Typography
 
 Use `Heading` with levels 1–6 and `Text` with sizes `body`, `small`, `caption`, or `label`. Text tones are `default`, `soft`, `muted`, and `faint`.
