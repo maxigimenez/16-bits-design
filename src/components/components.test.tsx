@@ -6,6 +6,7 @@ import { Badge } from './Badge';
 import { Button } from './Button';
 import { Card, CardContent, CardTitle } from './Card';
 import { Dialog } from './Dialog';
+import { EmptyState } from './EmptyState';
 import { Input } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
@@ -50,6 +51,23 @@ describe('form controls', () => {
 });
 
 describe('display components', () => {
+  it('renders an empty state with document-aware heading and action', () => {
+    render(
+      <EmptyState
+        title="No deployments yet"
+        headingLevel={2}
+        action={<button>Create deployment</button>}
+      >
+        Connect a repository to begin.
+      </EmptyState>,
+    );
+
+    expect(screen.getByRole('heading', { level: 2, name: 'No deployments yet' })).toBeInTheDocument();
+    expect(screen.getByText('Connect a repository to begin.')).toHaveClass('bits-empty-state__description');
+    expect(screen.getByRole('button', { name: 'Create deployment' })).toBeEnabled();
+    expect(document.querySelector('.bits-empty-state__motif')).toHaveAttribute('aria-hidden', 'true');
+  });
+
   it('exposes only live Ember and Ocean theme tokens', () => {
     expect(builtInThemes).toEqual(['ember', 'ocean']);
     expect(colors.primary).toBe('var(--bits-primary)');

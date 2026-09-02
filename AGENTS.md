@@ -251,6 +251,16 @@ Use `Dialog` for focused confirmation or interruption. Tones are `primary` and `
 - Do not open dialogs for information that can remain inline.
 - Do not add a second focus trap, backdrop, escape listener, or portal layer.
 
+### EmptyState
+
+Use `EmptyState` to explain an absence and offer the next useful action.
+
+- Distinguish the reason for absence in the copy: no data yet, no filtered matches, or no configuration.
+- Set `headingLevel` to preserve the surrounding document hierarchy.
+- Keep the description concrete and within the component's readable measure.
+- Provide one focused action when the user can resolve the absence.
+- Use Alert for failures; an error is not an empty state.
+
 ## Content quality
 
 - Prefer concrete labels: “Create project” over “Submit,” “Delete report” over “Confirm.”

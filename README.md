@@ -46,6 +46,7 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/button`
 - `@16-bits-design/ui/card`
 - `@16-bits-design/ui/dialog`
+- `@16-bits-design/ui/empty-state`
 - `@16-bits-design/ui/input`
 - `@16-bits-design/ui/meter`
 - `@16-bits-design/ui/select`
@@ -55,6 +56,23 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/toggle`
 - `@16-bits-design/ui/typography`
 - `@16-bits-design/ui/styles.css`
+
+### EmptyState
+
+Use `EmptyState` to explain an absence and offer the next useful action. Descriptions stay within a readable measure, the default pixel motif follows the active theme, and `headingLevel` preserves the surrounding document hierarchy.
+
+```tsx
+import { EmptyState } from '@16-bits-design/ui/empty-state';
+import { Button } from '@16-bits-design/ui/button';
+
+<EmptyState
+  title="No deployments yet"
+  headingLevel={3}
+  action={<Button size="sm">Create deployment</Button>}
+>
+  Create a deployment to connect a repository and start tracking releases.
+</EmptyState>
+```
 
 ## Theming
 

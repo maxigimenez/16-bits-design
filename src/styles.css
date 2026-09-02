@@ -334,6 +334,24 @@
 .bits-card__header + .bits-card__content { padding-top: 14px; }
 .bits-card__footer { display: flex; align-items: center; justify-content: flex-end; gap: 9px; padding: 13px 18px; border-top: var(--bits-border-width) solid var(--bits-line); }
 
+.bits-empty-state { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--bits-space-4); width: 100%; padding: calc(var(--bits-space-6) * 2) var(--bits-space-5); color: var(--bits-text); text-align: center; }
+.bits-empty-state__illustration { display: flex; align-items: center; justify-content: center; min-height: 42px; color: var(--bits-primary); }
+.bits-empty-state__motif { position: relative; display: grid; grid-template-columns: repeat(3, 10px); grid-template-rows: repeat(3, 10px); gap: 3px; width: 36px; height: 36px; }
+.bits-empty-state__motif span { background: var(--bits-muted); }
+.bits-empty-state__motif span:nth-child(1) { grid-column: 2; background: var(--bits-line-strong); }
+.bits-empty-state__motif span:nth-child(2) { grid-row: 2; }
+.bits-empty-state__motif span:nth-child(3) { grid-column: 2; grid-row: 2; background: var(--bits-primary); }
+.bits-empty-state__motif span:nth-child(4) { grid-column: 3; grid-row: 2; }
+.bits-empty-state__motif span:nth-child(5) { grid-column: 2; grid-row: 3; background: var(--bits-line-strong); }
+.bits-empty-state__copy { display: flex; align-items: center; flex-direction: column; gap: var(--bits-space-2); }
+.bits-empty-state__title { margin: 0; color: var(--bits-text); font: 400 var(--bits-font-size-h4)/1.35 var(--bits-font-display); }
+.bits-empty-state__description { max-width: 46ch; color: var(--bits-text-muted); font-size: var(--bits-font-size-small); line-height: 1.65; overflow-wrap: anywhere; }
+.bits-empty-state__action { display: flex; justify-content: center; max-width: 100%; }
+@media (max-width: 480px) {
+  .bits-empty-state { padding: var(--bits-space-6) var(--bits-space-3); }
+  .bits-empty-state__action { width: 100%; }
+}
+
 .bits-toast { display: flex; align-items: stretch; width: min(400px, calc(100vw - 32px)); border: var(--bits-border-width) solid var(--bits-line); background: var(--bits-panel); color: var(--bits-text); box-shadow: 5px 5px 0 var(--bits-shadow); font-family: var(--bits-font-body); animation: bits-drop 160ms steps(3) 1; }
 .bits-toast__rail { flex: none; width: 5px; background: var(--toast-tone); }
 .bits-toast__icon { display: flex; align-items: center; justify-content: center; flex: none; width: 34px; color: var(--toast-tone); font-size: 12px; }
