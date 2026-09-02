@@ -1,3 +1,6 @@
+export { Alert } from '@16-bits-design/ui/alert';
+export type { AlertProps, AlertTone } from '@16-bits-design/ui/alert';
+
 export { Avatar } from '@16-bits-design/ui/avatar';
 export type { AvatarProps, AvatarSize } from '@16-bits-design/ui/avatar';
 
@@ -24,6 +27,9 @@ export type { SelectOption, SelectProps } from '@16-bits-design/ui/select';
 
 export { Segmented } from '@16-bits-design/ui/segmented';
 export type { SegmentedOption, SegmentedProps } from '@16-bits-design/ui/segmented';
+
+export { Table, TableBody, TableCaption, TableCell, TableCellContent, TableFooter, TableHead, TableHeader, TableRow } from '@16-bits-design/ui/table';
+export type { TableCellAlign, TableCellContentProps, TableCellProps, TableHeaderProps, TableProps } from '@16-bits-design/ui/table';
 
 export { Textarea } from '@16-bits-design/ui/textarea';
 export type { TextareaProps } from '@16-bits-design/ui/textarea';

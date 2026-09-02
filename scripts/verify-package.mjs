@@ -18,21 +18,25 @@ for (const target of Object.values(manifest.exports)) {
 }
 
 const esm = await import('@16-bits-design/ui');
+const esmAlert = await import('@16-bits-design/ui/alert');
 const esmCard = await import('@16-bits-design/ui/card');
 const esmTheme = await import('@16-bits-design/ui/theme');
 const esmSegmented = await import('@16-bits-design/ui/segmented');
+const esmTable = await import('@16-bits-design/ui/table');
 
-if (esm.Card !== esmCard.Card || esm.Segmented !== esmSegmented.Segmented || esm.ThemeProvider !== esmTheme.ThemeProvider) {
+if (esm.Alert !== esmAlert.Alert || esm.Card !== esmCard.Card || esm.Segmented !== esmSegmented.Segmented || esm.ThemeProvider !== esmTheme.ThemeProvider || esm.Table !== esmTable.Table) {
   throw new Error('ESM root exports do not resolve to the public component subpaths.');
 }
 
 const require = createRequire(import.meta.url);
 const cjs = require('@16-bits-design/ui');
+const cjsAlert = require('@16-bits-design/ui/alert');
 const cjsCard = require('@16-bits-design/ui/card');
 const cjsTheme = require('@16-bits-design/ui/theme');
 const cjsSegmented = require('@16-bits-design/ui/segmented');
+const cjsTable = require('@16-bits-design/ui/table');
 
-if (cjs.Card !== cjsCard.Card || cjs.Segmented !== cjsSegmented.Segmented || cjs.ThemeProvider !== cjsTheme.ThemeProvider) {
+if (cjs.Alert !== cjsAlert.Alert || cjs.Card !== cjsCard.Card || cjs.Segmented !== cjsSegmented.Segmented || cjs.ThemeProvider !== cjsTheme.ThemeProvider || cjs.Table !== cjsTable.Table) {
   throw new Error('CommonJS root exports do not resolve to the public component subpaths.');
 }
 

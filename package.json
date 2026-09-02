@@ -28,6 +28,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./alert": {
+      "types": "./dist/alert.d.ts",
+      "import": "./dist/alert.js",
+      "require": "./dist/alert.cjs"
+    },
     "./avatar": {
       "types": "./dist/avatar.d.ts",
       "import": "./dist/avatar.js",
@@ -72,6 +77,11 @@
       "types": "./dist/segmented.d.ts",
       "import": "./dist/segmented.js",
       "require": "./dist/segmented.cjs"
+    },
+    "./table": {
+      "types": "./dist/table.d.ts",
+      "import": "./dist/table.js",
+      "require": "./dist/table.cjs"
     },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
