@@ -73,6 +73,11 @@
       "import": "./dist/select.js",
       "require": "./dist/select.cjs"
     },
+    "./table": {
+      "types": "./dist/table.d.ts",
+      "import": "./dist/table.js",
+      "require": "./dist/table.cjs"
+    },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
       "import": "./dist/textarea.js",

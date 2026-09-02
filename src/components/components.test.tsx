@@ -10,6 +10,7 @@ import { Dialog } from './Dialog';
 import { Input } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './Table';
 import { ToastProvider, useToast } from './Toast';
 import { Toggle } from './Toggle';
 import { Heading, Text } from './Typography';
@@ -95,6 +96,20 @@ describe('display components', () => {
     render(<><Heading level={3}>Section</Heading><Text tone="muted">Supporting copy</Text></>);
     expect(screen.getByRole('heading', { level: 3 })).toHaveClass('bits-heading--3');
     expect(screen.getByText('Supporting copy')).toHaveClass('bits-text--muted');
+  });
+
+  it('keeps a semantic table inside a named keyboard-scrollable region', () => {
+    render(
+      <Table scrollLabel="Deployment history">
+        <TableHead><TableRow><TableHeader>Duration</TableHeader></TableRow></TableHead>
+        <TableBody><TableRow><TableCell align="end">02:18</TableCell></TableRow></TableBody>
+      </Table>,
+    );
+
+    expect(screen.getByRole('region', { name: 'Deployment history' })).toHaveAttribute('tabindex', '0');
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: 'Duration' })).toHaveAttribute('scope', 'col');
+    expect(screen.getByRole('cell', { name: '02:18' })).toHaveAttribute('data-align', 'end');
   });
 
   it('applies custom theme colors as CSS variables', () => {

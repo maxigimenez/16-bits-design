@@ -211,6 +211,16 @@ Use `Toggle` for an immediately applied binary setting through `checked`/`defaul
 - Provide `label` unless an external accessible label exists.
 - Do not use a toggle for mutually exclusive choices or an action that still requires form submission.
 
+### Table
+
+Use `Table` and its semantic section, row, header, and cell primitives for genuinely tabular data.
+
+- Provide a context-specific `scrollLabel` for the keyboard-focusable overflow region.
+- Use `align="end"` for numeric values and durations; it also enables tabular numerals.
+- Use `TableCellContent` for a common primary-plus-secondary text cell.
+- Keep row actions explicit and keyboard reachable; do not make the row itself impersonate a link.
+- Do not replace native table semantics with a grid of `div` elements.
+
 ### Badge
 
 Badge tones are `neutral`, `primary`, `amber`, `success`, `danger`, and `outline`.

@@ -50,6 +50,7 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/input`
 - `@16-bits-design/ui/meter`
 - `@16-bits-design/ui/select`
+- `@16-bits-design/ui/table`
 - `@16-bits-design/ui/textarea`
 - `@16-bits-design/ui/theme`
 - `@16-bits-design/ui/toast`
@@ -72,6 +73,36 @@ import { Button } from '@16-bits-design/ui/button';
 >
   The service returned an unexpected response.
 </Alert>
+```
+
+### Table
+
+Use the composable table primitives for genuinely tabular data. `Table` keeps wide content inside a keyboard-focusable horizontal scroll region; give that region a context-specific `scrollLabel`. End-aligned cells use tabular numerals automatically.
+
+```tsx
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@16-bits-design/ui/table';
+
+<Table scrollLabel="Deployment history">
+  <TableHead>
+    <TableRow>
+      <TableHeader>Deployment</TableHeader>
+      <TableHeader align="end">Duration</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>Gateway API</TableCell>
+      <TableCell align="end">02:18</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 ```
 
 ## Theming
