@@ -22,6 +22,9 @@ export type { MeterProps, MeterTone } from '@16-bits-design/ui/meter';
 export { Select } from '@16-bits-design/ui/select';
 export type { SelectOption, SelectProps } from '@16-bits-design/ui/select';
 
+export { Table, TableBody, TableCaption, TableCell, TableCellContent, TableFooter, TableHead, TableHeader, TableRow } from '@16-bits-design/ui/table';
+export type { TableCellAlign, TableCellContentProps, TableCellProps, TableHeaderProps, TableProps } from '@16-bits-design/ui/table';
+
 export { Textarea } from '@16-bits-design/ui/textarea';
 export type { TextareaProps } from '@16-bits-design/ui/textarea';
 
