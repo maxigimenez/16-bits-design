@@ -68,6 +68,11 @@
       "import": "./dist/select.js",
       "require": "./dist/select.cjs"
     },
+    "./spinner": {
+      "types": "./dist/spinner.d.ts",
+      "import": "./dist/spinner.js",
+      "require": "./dist/spinner.cjs"
+    },
     "./textarea": {
       "types": "./dist/textarea.d.ts",
       "import": "./dist/textarea.js",

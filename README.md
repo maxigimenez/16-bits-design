@@ -49,12 +49,23 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/input`
 - `@16-bits-design/ui/meter`
 - `@16-bits-design/ui/select`
+- `@16-bits-design/ui/spinner`
 - `@16-bits-design/ui/textarea`
 - `@16-bits-design/ui/theme`
 - `@16-bits-design/ui/toast`
 - `@16-bits-design/ui/toggle`
 - `@16-bits-design/ui/typography`
 - `@16-bits-design/ui/styles.css`
+
+### Spinner
+
+Use `Spinner` for indeterminate waits. Its required label is announced through a polite live region, can remain visible or be visually hidden, and the stepped animation becomes a static bar when reduced motion is requested.
+
+```tsx
+import { Spinner } from '@16-bits-design/ui/spinner';
+
+<Spinner label="Loading deployments" />
+```
 
 ## Theming
 

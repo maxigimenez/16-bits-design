@@ -22,6 +22,9 @@ export type { MeterProps, MeterTone } from '@16-bits-design/ui/meter';
 export { Select } from '@16-bits-design/ui/select';
 export type { SelectOption, SelectProps } from '@16-bits-design/ui/select';
 
+export { Spinner } from '@16-bits-design/ui/spinner';
+export type { SpinnerProps, SpinnerSize } from '@16-bits-design/ui/spinner';
+
 export { Textarea } from '@16-bits-design/ui/textarea';
 export type { TextareaProps } from '@16-bits-design/ui/textarea';
 

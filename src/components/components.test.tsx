@@ -9,6 +9,7 @@ import { Dialog } from './Dialog';
 import { Input } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
+import { Spinner } from './Spinner';
 import { ToastProvider, useToast } from './Toast';
 import { Toggle } from './Toggle';
 import { Heading, Text } from './Typography';
@@ -50,6 +51,21 @@ describe('form controls', () => {
 });
 
 describe('display components', () => {
+  it('announces indeterminate loading with a polite busy status', () => {
+    render(<Spinner label="Loading deployments" />);
+    const status = screen.getByRole('status');
+    expect(status).toHaveAccessibleName('');
+    expect(status).toHaveTextContent('Loading deployments');
+    expect(status).toHaveAttribute('aria-live', 'polite');
+    expect(status).toHaveAttribute('aria-busy', 'true');
+    expect(document.querySelector('.bits-spinner__track')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('keeps a hidden spinner label available to assistive technology', () => {
+    render(<Spinner label="Refreshing status" hideLabel />);
+    expect(screen.getByText('Refreshing status')).toHaveClass('bits-sr-only');
+  });
+
   it('exposes only live Ember and Ocean theme tokens', () => {
     expect(builtInThemes).toEqual(['ember', 'ocean']);
     expect(colors.primary).toBe('var(--bits-primary)');

@@ -307,6 +307,17 @@
 .bits-meter--success .bits-meter__segment[data-active='true'] { background: var(--bits-success); }
 .bits-meter--danger .bits-meter__segment[data-active='true'] { background: var(--bits-danger); }
 
+.bits-spinner { display: inline-flex; align-items: center; gap: var(--bits-space-3); color: var(--bits-text-muted); font-family: var(--bits-font-body); }
+.bits-spinner__track { position: relative; flex: none; overflow: hidden; background: var(--bits-muted); }
+.bits-spinner__bar { position: absolute; left: -40%; bottom: 0; width: 40%; height: 100%; background: var(--bits-primary); animation: bits-scan 1.1s steps(6) infinite; }
+.bits-spinner__label { color: var(--bits-text-muted); font-size: var(--bits-font-size-caption); line-height: 1.5; }
+.bits-spinner--sm .bits-spinner__track { width: 80px; height: 4px; }
+.bits-spinner--md .bits-spinner__track { width: 120px; height: 6px; }
+.bits-spinner--lg .bits-spinner__track { width: 180px; height: 8px; }
+@media (prefers-reduced-motion: reduce) {
+  .bits-spinner__bar { left: 0; width: 100%; animation: none; opacity: .72; }
+}
+
 .bits-avatar { display: inline-flex; align-items: center; justify-content: center; flex: none; overflow: hidden; border: var(--bits-border-width) solid var(--bits-avatar-color, var(--bits-primary)); border-radius: 0; background: var(--bits-avatar-color, var(--bits-primary)); color: var(--bits-avatar-ink, var(--bits-ink)); font-family: var(--bits-font-display); text-transform: uppercase; user-select: none; }
 .bits-avatar--sm { width: 24px; height: 24px; font-size: 8px; }
 .bits-avatar--md { width: 28px; height: 28px; font-size: 9px; }
