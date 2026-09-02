@@ -233,6 +233,16 @@ Badge tones are `neutral`, `primary`, `amber`, `success`, `danger`, and `outline
 
 Use `Avatar` with a required `name`; sizes are `sm`, `md`, and `lg`. Supply `src` and meaningful `alt` when an image conveys identity. Prefer semantic token values for `color` and `ink`.
 
+### Alert
+
+Use `Alert` for persistent inline feedback. Tones are `info`, `warning`, `success`, and `danger`.
+
+- Use `danger` for failures that need immediate attention; it uses `role="alert"`.
+- Use quieter tones for advisory state; they use `role="status"`.
+- Provide a concrete recovery control through `action` when the user can resolve the condition.
+- Do not use Alert for transient confirmation that is better handled by Toast.
+- Do not use Toast as the only record of a blocking error.
+
 ### Meter
 
 Use `Meter` for bounded progress with `value`, optional `max`, `segments`, `tone`, and an accessible `label`.

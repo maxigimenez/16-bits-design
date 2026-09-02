@@ -1,3 +1,6 @@
+export { Alert } from '@16-bits-design/ui/alert';
+export type { AlertProps, AlertTone } from '@16-bits-design/ui/alert';
+
 export { Avatar } from '@16-bits-design/ui/avatar';
 export type { AvatarProps, AvatarSize } from '@16-bits-design/ui/avatar';
 

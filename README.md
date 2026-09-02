@@ -41,6 +41,7 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 ## Public entry points
 
 - `@16-bits-design/ui`
+- `@16-bits-design/ui/alert`
 - `@16-bits-design/ui/avatar`
 - `@16-bits-design/ui/badge`
 - `@16-bits-design/ui/button`
@@ -56,6 +57,23 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/toggle`
 - `@16-bits-design/ui/typography`
 - `@16-bits-design/ui/styles.css`
+
+### Alert
+
+Use `Alert` for persistent inline feedback that must remain available in the page. Danger alerts use `role="alert"`; info, warning, and success alerts use the quieter `role="status"`. Actions remain explicit composable controls.
+
+```tsx
+import { Alert } from '@16-bits-design/ui/alert';
+import { Button } from '@16-bits-design/ui/button';
+
+<Alert
+  tone="danger"
+  title="Could not load deployments"
+  action={<Button size="sm">Retry</Button>}
+>
+  The service returned an unexpected response.
+</Alert>
+```
 
 ### Table
 

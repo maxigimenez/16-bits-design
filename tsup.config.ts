@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
+    alert: 'src/entries/alert.ts',
     avatar: 'src/entries/avatar.ts',
     badge: 'src/entries/badge.ts',
     button: 'src/entries/button.ts',
