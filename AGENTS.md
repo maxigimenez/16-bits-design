@@ -135,7 +135,7 @@ Custom themes are CSS-first. Partial overrides inherit the remaining defaults. A
 
 - Surfaces: `--bits-surface`, `--bits-panel`, `--bits-raised`, `--bits-muted`.
 - Borders: `--bits-line`, `--bits-line-strong`.
-- Foreground: `--bits-ink`, `--bits-text`, `--bits-text-soft`, `--bits-text-muted`, `--bits-text-faint`.
+- Foreground: `--bits-ink`, `--bits-text`, `--bits-text-soft`, `--bits-text-dim`, `--bits-text-muted`, `--bits-text-faint`.
 - Brand: `--bits-primary`, `--bits-primary-soft`, `--bits-primary-shadow`.
 - Status: `--bits-amber`, `--bits-success`, `--bits-danger`, `--bits-danger-soft`, `--bits-danger-shadow`.
 - Effects: `--bits-shadow`, `--bits-backdrop`.
@@ -188,11 +188,12 @@ Use block `Code` for preformatted machine text and inline `Code` for short ident
 
 ### Typography
 
-Use `Heading` with levels 1–6 and `Text` with sizes `body`, `small`, `caption`, or `label`. Text tones are `default`, `soft`, `muted`, and `faint`.
+Use `Heading` with levels 1–6 and `Text` with sizes `body`, `small`, `caption`, or `label`. Text tones are `default`, `soft`, `dim`, `muted`, and `faint`.
 
 - Choose heading levels by document structure, not desired visual size.
 - Use `label` for compact metadata and control labels, not paragraphs.
-- Use `muted` and `faint` only for genuinely secondary content.
+- Use `dim` for readable subordinate interface text such as inactive navigation.
+- Use `muted` for metadata and placeholders, and `faint` only for nonessential decorative text.
 - Do not apply display typography to long body copy.
 
 ### Input and Textarea

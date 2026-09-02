@@ -15,6 +15,7 @@ export const colors = {
   dangerSoft: 'var(--bits-danger-soft)',
   text: 'var(--bits-text)',
   textSoft: 'var(--bits-text-soft)',
+  textDim: 'var(--bits-text-dim)',
   textMuted: 'var(--bits-text-muted)',
   textFaint: 'var(--bits-text-faint)',
 } as const;

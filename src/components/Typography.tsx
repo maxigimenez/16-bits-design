@@ -14,11 +14,12 @@ export function Heading({ level = 2, className, ...props }: HeadingProps) {
 
 export type TextSize = 'body' | 'small' | 'caption' | 'label';
 export type TextElement = 'p' | 'span' | 'div' | 'label' | 'code';
+export type TextTone = 'default' | 'soft' | 'dim' | 'muted' | 'faint';
 
 export interface TextProps extends ComponentPropsWithoutRef<'p'> {
   as?: TextElement;
   size?: TextSize;
-  tone?: 'default' | 'soft' | 'muted' | 'faint';
+  tone?: TextTone;
   children?: ReactNode;
 }
 

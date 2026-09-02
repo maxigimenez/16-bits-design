@@ -29,10 +29,23 @@ export const Scale: Story = {
       <Heading level={6}>heading six · label</Heading>
       <Text>Body text uses JetBrains Mono with a readable 1.65 line height.</Text>
       <Text size="small" tone="soft">Small supporting copy.</Text>
+      <Text size="small" tone="dim">Readable subordinate interface text.</Text>
       <Text size="caption" tone="muted">Caption and metadata copy.</Text>
       <Text as="span" size="label" tone="muted">uppercase label</Text>
     </div>
   )
+};
+
+export const ToneRamp: Story = {
+  render: () => (
+    <div className="story-stack">
+      <Text tone="default">Default · primary content</Text>
+      <Text tone="soft">Soft · secondary readable content</Text>
+      <Text tone="dim">Dim · subordinate navigation and interface text</Text>
+      <Text tone="muted">Muted · supporting metadata and placeholders</Text>
+      <Text tone="faint">Faint · lowest-emphasis decorative text</Text>
+    </div>
+  ),
 };
 
 export const NativeElements: Story = {
