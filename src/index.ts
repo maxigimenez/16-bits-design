@@ -16,6 +16,9 @@ export type { CardProps, CardTone, CardVariant } from '@16-bits-design/ui/card';
 export { Dialog } from '@16-bits-design/ui/dialog';
 export type { DialogProps, DialogTone } from '@16-bits-design/ui/dialog';
 
+export { EmptyState } from '@16-bits-design/ui/empty-state';
+export type { EmptyStateHeadingLevel, EmptyStateProps } from '@16-bits-design/ui/empty-state';
+
 export { Input } from '@16-bits-design/ui/input';
 export type { FieldStatus, InputProps } from '@16-bits-design/ui/input';
 

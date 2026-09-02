@@ -9,6 +9,7 @@ export default defineConfig({
     button: 'src/entries/button.ts',
     card: 'src/entries/card.ts',
     dialog: 'src/entries/dialog.ts',
+    'empty-state': 'src/entries/empty-state.ts',
     input: 'src/entries/input.ts',
     meter: 'src/entries/meter.ts',
     select: 'src/entries/select.ts',
