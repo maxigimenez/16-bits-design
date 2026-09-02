@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
+    alert: 'src/entries/alert.ts',
     avatar: 'src/entries/avatar.ts',
     badge: 'src/entries/badge.ts',
     button: 'src/entries/button.ts',
@@ -12,6 +13,9 @@ export default defineConfig({
     input: 'src/entries/input.ts',
     meter: 'src/entries/meter.ts',
     select: 'src/entries/select.ts',
+    spinner: 'src/entries/spinner.ts',
+    segmented: 'src/entries/segmented.ts',
+    table: 'src/entries/table.ts',
     textarea: 'src/entries/textarea.ts',
     theme: 'src/entries/theme.ts',
     toast: 'src/entries/toast.ts',

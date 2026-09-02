@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import { Alert } from './Alert';
 import { Avatar } from './Avatar';
 import { Badge } from './Badge';
 import { Button } from './Button';
@@ -10,6 +11,9 @@ import { EmptyState } from './EmptyState';
 import { Input } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
+import { Spinner } from './Spinner';
+import { Segmented } from './Segmented';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './Table';
 import { ToastProvider, useToast } from './Toast';
 import { Toggle } from './Toggle';
 import { Heading, Text } from './Typography';
@@ -48,6 +52,41 @@ describe('form controls', () => {
     await user.click(screen.getByRole('option', { name: 'patch' }));
     expect(screen.getByRole('button', { name: /patch/i })).toBeInTheDocument();
   });
+
+  it('updates an uncontrolled segmented control and exposes pressed state', async () => {
+    const user = userEvent.setup();
+    render(
+      <Segmented
+        label="Filter deployments"
+        defaultValue="all"
+        options={[{ value: 'all', label: 'All' }, { value: 'failed', label: 'Failed' }]}
+      />,
+    );
+
+    const group = screen.getByRole('group', { name: 'Filter deployments' });
+    const failed = screen.getByRole('button', { name: 'Failed' });
+    expect(group).toContainElement(failed);
+    expect(screen.getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'true');
+    await user.click(failed);
+    expect(failed).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('reports controlled segmented changes without mutating the selected value', async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <Segmented
+        label="Filter deployments"
+        value="all"
+        onValueChange={onValueChange}
+        options={[{ value: 'all', label: 'All' }, { value: 'failed', label: 'Failed' }]}
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Failed' }));
+    expect(onValueChange).toHaveBeenCalledWith('failed');
+    expect(screen.getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'true');
+  });
 });
 
 describe('display components', () => {
@@ -66,6 +105,34 @@ describe('display components', () => {
     expect(screen.getByText('Connect a repository to begin.')).toHaveClass('bits-empty-state__description');
     expect(screen.getByRole('button', { name: 'Create deployment' })).toBeEnabled();
     expect(document.querySelector('.bits-empty-state__motif')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('announces indeterminate loading with a polite busy status', () => {
+    render(<Spinner label="Loading deployments" />);
+    const status = screen.getByRole('status');
+    expect(status).toHaveAccessibleName('');
+    expect(status).toHaveTextContent('Loading deployments');
+    expect(status).toHaveAttribute('aria-live', 'polite');
+    expect(status).toHaveAttribute('aria-busy', 'true');
+    expect(document.querySelector('.bits-spinner__track')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('keeps a hidden spinner label available to assistive technology', () => {
+    render(<Spinner label="Refreshing status" hideLabel />);
+    expect(screen.getByText('Refreshing status')).toHaveClass('bits-sr-only');
+  });
+
+  it('announces danger alerts assertively and advisory alerts politely', () => {
+    const { rerender } = render(<Alert tone="danger" title="Request failed">Try again.</Alert>);
+    expect(screen.getByRole('alert')).toHaveTextContent('Request failedTry again.');
+
+    rerender(<Alert tone="warning" title="Limit approaching">Review usage.</Alert>);
+    expect(screen.getByRole('status')).toHaveTextContent('Limit approachingReview usage.');
+  });
+
+  it('renders an explicit alert recovery action', () => {
+    render(<Alert tone="danger" title="Request failed" action={<button>Retry request</button>}>Try again.</Alert>);
+    expect(screen.getByRole('button', { name: 'Retry request' })).toBeEnabled();
   });
 
   it('exposes only live Ember and Ocean theme tokens', () => {
@@ -99,6 +166,20 @@ describe('display components', () => {
     render(<><Heading level={3}>Section</Heading><Text tone="muted">Supporting copy</Text></>);
     expect(screen.getByRole('heading', { level: 3 })).toHaveClass('bits-heading--3');
     expect(screen.getByText('Supporting copy')).toHaveClass('bits-text--muted');
+  });
+
+  it('keeps a semantic table inside a named keyboard-scrollable region', () => {
+    render(
+      <Table scrollLabel="Deployment history">
+        <TableHead><TableRow><TableHeader>Duration</TableHeader></TableRow></TableHead>
+        <TableBody><TableRow><TableCell align="end">02:18</TableCell></TableRow></TableBody>
+      </Table>,
+    );
+
+    expect(screen.getByRole('region', { name: 'Deployment history' })).toHaveAttribute('tabindex', '0');
+    expect(screen.getByRole('table')).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: 'Duration' })).toHaveAttribute('scope', 'col');
+    expect(screen.getByRole('cell', { name: '02:18' })).toHaveAttribute('data-align', 'end');
   });
 
   it('applies custom theme colors as CSS variables', () => {
