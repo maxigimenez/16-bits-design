@@ -17,8 +17,6 @@ function PixelMotif() {
       <span />
       <span />
       <span />
-      <span />
-      <span />
     </span>
   );
 }
