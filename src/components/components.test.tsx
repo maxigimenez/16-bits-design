@@ -165,6 +165,9 @@ describe('display components', () => {
   it('exposes only live Ember and Ocean theme tokens', () => {
     expect(builtInThemes).toEqual(['ember', 'ocean']);
     expect(colors.primary).toBe('var(--bits-primary)');
+    expect(colors.textDim).toBe('var(--bits-text-dim)');
+    expect(stylesheet).toContain('--bits-text-dim: #a9a394');
+    expect(stylesheet).toContain('--bits-text-dim: #9ab6c2');
   });
 
   it('exposes semantic progress values', () => {
@@ -190,9 +193,9 @@ describe('display components', () => {
   });
 
   it('renders semantic typography', () => {
-    render(<><Heading level={3}>Section</Heading><Text tone="muted">Supporting copy</Text></>);
+    render(<><Heading level={3}>Section</Heading><Text tone="dim">Subordinate navigation</Text></>);
     expect(screen.getByRole('heading', { level: 3 })).toHaveClass('bits-heading--3');
-    expect(screen.getByText('Supporting copy')).toHaveClass('bits-text--muted');
+    expect(screen.getByText('Subordinate navigation')).toHaveClass('bits-text--dim');
   });
 
   it('keeps a semantic table inside a named keyboard-scrollable region', () => {

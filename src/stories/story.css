@@ -34,5 +34,6 @@ body { margin: 0; background: var(--bits-surface); color: var(--bits-text); }
   --bits-primary: #8f8fff;
   --bits-primary-soft: #c2c2ff;
   --bits-primary-shadow: #35357e;
+  --bits-text-dim: #adadd2;
 }
 @media (max-width: 600px) { .story-shell { padding: 16px; } }

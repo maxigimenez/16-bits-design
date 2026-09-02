@@ -40,6 +40,7 @@
   --bits-danger-soft: #ff8b72;
   --bits-text: #f2ede1;
   --bits-text-soft: #c9c3b4;
+  --bits-text-dim: #a9a394;
   --bits-text-muted: #8f8a7c;
   --bits-text-faint: #6f6a5e;
   --bits-shadow: rgba(0, 0, 0, .5);
@@ -83,6 +84,7 @@
   --bits-danger-soft: #ff9b9c;
   --bits-text: #edfaff;
   --bits-text-soft: #bad3dc;
+  --bits-text-dim: #9ab6c2;
   --bits-text-muted: #7fa2b0;
   --bits-text-faint: #587783;
 }
@@ -178,6 +180,7 @@
 .bits-text--label { font-size: var(--bits-font-size-label); line-height: 1.4; letter-spacing: .18em; text-transform: uppercase; }
 .bits-text--default { color: var(--bits-text); }
 .bits-text--soft { color: var(--bits-text-soft); }
+.bits-text--dim { color: var(--bits-text-dim); }
 .bits-text--muted { color: var(--bits-text-muted); }
 .bits-text--faint { color: var(--bits-text-faint); }
 .bits-theme :where(small) { color: var(--bits-text-muted); font-size: var(--bits-font-size-caption); line-height: 1.5; }
