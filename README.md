@@ -50,6 +50,7 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/input`
 - `@16-bits-design/ui/meter`
 - `@16-bits-design/ui/select`
+- `@16-bits-design/ui/segmented`
 - `@16-bits-design/ui/table`
 - `@16-bits-design/ui/textarea`
 - `@16-bits-design/ui/theme`
@@ -57,6 +58,25 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 - `@16-bits-design/ui/toggle`
 - `@16-bits-design/ui/typography`
 - `@16-bits-design/ui/styles.css`
+
+### Segmented
+
+Use `Segmented` for a small set of mutually exclusive filters or views that apply immediately. Each option is an individually Tab-reachable button with `aria-pressed`; the component supports controlled and uncontrolled state.
+
+```tsx
+import { Segmented } from '@16-bits-design/ui/segmented';
+
+<Segmented
+  label="Filter deployments by status"
+  value={filter}
+  onValueChange={setFilter}
+  options={[
+    { value: 'all', label: 'All' },
+    { value: 'running', label: 'Running' },
+    { value: 'failed', label: 'Failed' },
+  ]}
+/>
+```
 
 ### Alert
 

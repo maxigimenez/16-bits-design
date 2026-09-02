@@ -204,6 +204,16 @@ Use `Select` with `options`, `value`/`defaultValue`, and `onValueChange`.
 - Do not replace it with a clickable `div`; the component already supplies keyboard listbox behavior.
 - For native form submission, provide `name`.
 
+### Segmented
+
+Use `Segmented` for a small mutually exclusive set that applies immediately, such as a status filter or view switcher.
+
+- Give the group a concise, context-specific `label`.
+- Use `value` and `onValueChange` when application state owns the selection; use `defaultValue` otherwise.
+- Keep option labels short and visible without truncation.
+- Use disabled options only when showing the unavailable choice is useful.
+- Do not use Segmented for form submission, multiple selections, or more choices than fit comfortably in a compact row.
+
 ### Toggle
 
 Use `Toggle` for an immediately applied binary setting through `checked`/`defaultChecked` and `onCheckedChange`.

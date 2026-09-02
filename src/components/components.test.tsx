@@ -10,6 +10,7 @@ import { Dialog } from './Dialog';
 import { Input } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
+import { Segmented } from './Segmented';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './Table';
 import { ToastProvider, useToast } from './Toast';
 import { Toggle } from './Toggle';
@@ -48,6 +49,41 @@ describe('form controls', () => {
     await user.click(screen.getByRole('button', { name: /select an option/i }));
     await user.click(screen.getByRole('option', { name: 'patch' }));
     expect(screen.getByRole('button', { name: /patch/i })).toBeInTheDocument();
+  });
+
+  it('updates an uncontrolled segmented control and exposes pressed state', async () => {
+    const user = userEvent.setup();
+    render(
+      <Segmented
+        label="Filter deployments"
+        defaultValue="all"
+        options={[{ value: 'all', label: 'All' }, { value: 'failed', label: 'Failed' }]}
+      />,
+    );
+
+    const group = screen.getByRole('group', { name: 'Filter deployments' });
+    const failed = screen.getByRole('button', { name: 'Failed' });
+    expect(group).toContainElement(failed);
+    expect(screen.getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'true');
+    await user.click(failed);
+    expect(failed).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('reports controlled segmented changes without mutating the selected value', async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <Segmented
+        label="Filter deployments"
+        value="all"
+        onValueChange={onValueChange}
+        options={[{ value: 'all', label: 'All' }, { value: 'failed', label: 'Failed' }]}
+      />,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Failed' }));
+    expect(onValueChange).toHaveBeenCalledWith('failed');
+    expect(screen.getByRole('button', { name: 'All' })).toHaveAttribute('aria-pressed', 'true');
   });
 });
 

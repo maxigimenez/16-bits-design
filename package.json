@@ -73,6 +73,11 @@
       "import": "./dist/select.js",
       "require": "./dist/select.cjs"
     },
+    "./segmented": {
+      "types": "./dist/segmented.d.ts",
+      "import": "./dist/segmented.js",
+      "require": "./dist/segmented.cjs"
+    },
     "./table": {
       "types": "./dist/table.d.ts",
       "import": "./dist/table.js",
