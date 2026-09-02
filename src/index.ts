@@ -1,3 +1,6 @@
+export { Alert } from '@16-bits-design/ui/alert';
+export type { AlertProps, AlertTone } from '@16-bits-design/ui/alert';
+
 export { Avatar } from '@16-bits-design/ui/avatar';
 export type { AvatarProps, AvatarSize } from '@16-bits-design/ui/avatar';
 
@@ -16,6 +19,9 @@ export type { CodeBlockProps, CodeInlineProps, CodeProps, CodeVariant } from '@1
 export { Dialog } from '@16-bits-design/ui/dialog';
 export type { DialogProps, DialogTone } from '@16-bits-design/ui/dialog';
 
+export { EmptyState } from '@16-bits-design/ui/empty-state';
+export type { EmptyStateHeadingLevel, EmptyStateProps } from '@16-bits-design/ui/empty-state';
+
 export { Input } from '@16-bits-design/ui/input';
 export type { FieldStatus, InputProps } from '@16-bits-design/ui/input';
 
@@ -24,6 +30,15 @@ export type { MeterProps, MeterTone } from '@16-bits-design/ui/meter';
 
 export { Select } from '@16-bits-design/ui/select';
 export type { SelectOption, SelectProps } from '@16-bits-design/ui/select';
+
+export { Spinner } from '@16-bits-design/ui/spinner';
+export type { SpinnerProps, SpinnerSize } from '@16-bits-design/ui/spinner';
+
+export { Segmented } from '@16-bits-design/ui/segmented';
+export type { SegmentedOption, SegmentedProps } from '@16-bits-design/ui/segmented';
+
+export { Table, TableBody, TableCaption, TableCell, TableCellContent, TableFooter, TableHead, TableHeader, TableRow } from '@16-bits-design/ui/table';
+export type { TableCellAlign, TableCellContentProps, TableCellProps, TableHeaderProps, TableProps } from '@16-bits-design/ui/table';
 
 export { Textarea } from '@16-bits-design/ui/textarea';
 export type { TextareaProps } from '@16-bits-design/ui/textarea';

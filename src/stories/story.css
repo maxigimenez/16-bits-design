@@ -18,6 +18,8 @@ body { margin: 0; background: var(--bits-surface); color: var(--bits-text); }
 .story-subheading { margin: 0; font: 400 13px/1 var(--bits-font-display); }
 .story-body { margin: 0; font-size: 12px; }
 .story-card { display: flex; flex-direction: column; gap: 8px; min-width: 180px; }
+.story-empty-glyph { display: grid; place-items: center; width: 36px; height: 36px; background: var(--bits-success); color: var(--bits-ink); font: 400 13px/1 var(--bits-font-display); }
+.story-table-person { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .story-theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); min-height: 360px; }
 .story-theme-preview { padding: 32px; background: var(--bits-surface); }
 .story-custom-theme {

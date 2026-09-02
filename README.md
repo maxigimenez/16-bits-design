@@ -41,15 +41,20 @@ All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Exp
 ## Public entry points
 
 - `@16-bits-design/ui`
+- `@16-bits-design/ui/alert`
 - `@16-bits-design/ui/avatar`
 - `@16-bits-design/ui/badge`
 - `@16-bits-design/ui/button`
 - `@16-bits-design/ui/card`
 - `@16-bits-design/ui/code`
 - `@16-bits-design/ui/dialog`
+- `@16-bits-design/ui/empty-state`
 - `@16-bits-design/ui/input`
 - `@16-bits-design/ui/meter`
 - `@16-bits-design/ui/select`
+- `@16-bits-design/ui/spinner`
+- `@16-bits-design/ui/segmented`
+- `@16-bits-design/ui/table`
 - `@16-bits-design/ui/textarea`
 - `@16-bits-design/ui/theme`
 - `@16-bits-design/ui/toast`
@@ -67,6 +72,99 @@ import { Code } from '@16-bits-design/ui/code';
 <Code label="Route definition">{JSON.stringify(route, null, 2)}</Code>
 
 <p>Deployment <Code variant="inline">dpl_8f32c1</Code> is ready.</p>
+```
+
+### EmptyState
+
+Use `EmptyState` to explain an absence and offer the next useful action. Descriptions stay within a readable measure, the default pixel motif follows the active theme, and `headingLevel` preserves the surrounding document hierarchy.
+
+```tsx
+import { EmptyState } from '@16-bits-design/ui/empty-state';
+import { Button } from '@16-bits-design/ui/button';
+
+<EmptyState
+  title="No deployments yet"
+  headingLevel={3}
+  action={<Button size="sm">Create deployment</Button>}
+>
+  Create a deployment to connect a repository and start tracking releases.
+</EmptyState>
+```
+
+### Spinner
+
+Use `Spinner` for indeterminate waits. Its required label is announced through a polite live region, can remain visible or be visually hidden, and the stepped animation becomes a static bar when reduced motion is requested.
+
+```tsx
+import { Spinner } from '@16-bits-design/ui/spinner';
+
+<Spinner label="Loading deployments" />
+```
+
+### Segmented
+
+Use `Segmented` for a small set of mutually exclusive filters or views that apply immediately. Each option is an individually Tab-reachable button with `aria-pressed`; the component supports controlled and uncontrolled state.
+
+```tsx
+import { Segmented } from '@16-bits-design/ui/segmented';
+
+<Segmented
+  label="Filter deployments by status"
+  value={filter}
+  onValueChange={setFilter}
+  options={[
+    { value: 'all', label: 'All' },
+    { value: 'running', label: 'Running' },
+    { value: 'failed', label: 'Failed' },
+  ]}
+/>
+```
+
+### Alert
+
+Use `Alert` for persistent inline feedback that must remain available in the page. Danger alerts use `role="alert"`; info, warning, and success alerts use the quieter `role="status"`. Actions remain explicit composable controls.
+
+```tsx
+import { Alert } from '@16-bits-design/ui/alert';
+import { Button } from '@16-bits-design/ui/button';
+
+<Alert
+  tone="danger"
+  title="Could not load deployments"
+  action={<Button size="sm">Retry</Button>}
+>
+  The service returned an unexpected response.
+</Alert>
+```
+
+### Table
+
+Use the composable table primitives for genuinely tabular data. `Table` keeps wide content inside a keyboard-focusable horizontal scroll region; give that region a context-specific `scrollLabel`. End-aligned cells use tabular numerals automatically.
+
+```tsx
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@16-bits-design/ui/table';
+
+<Table scrollLabel="Deployment history">
+  <TableHead>
+    <TableRow>
+      <TableHeader>Deployment</TableHeader>
+      <TableHeader align="end">Duration</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>Gateway API</TableCell>
+      <TableCell align="end">02:18</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 ```
 
 ## Theming
