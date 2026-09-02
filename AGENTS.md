@@ -204,12 +204,32 @@ Use `Select` with `options`, `value`/`defaultValue`, and `onValueChange`.
 - Do not replace it with a clickable `div`; the component already supplies keyboard listbox behavior.
 - For native form submission, provide `name`.
 
+### Segmented
+
+Use `Segmented` for a small mutually exclusive set that applies immediately, such as a status filter or view switcher.
+
+- Give the group a concise, context-specific `label`.
+- Use `value` and `onValueChange` when application state owns the selection; use `defaultValue` otherwise.
+- Keep option labels short and visible without truncation.
+- Use disabled options only when showing the unavailable choice is useful.
+- Do not use Segmented for form submission, multiple selections, or more choices than fit comfortably in a compact row.
+
 ### Toggle
 
 Use `Toggle` for an immediately applied binary setting through `checked`/`defaultChecked` and `onCheckedChange`.
 
 - Provide `label` unless an external accessible label exists.
 - Do not use a toggle for mutually exclusive choices or an action that still requires form submission.
+
+### Table
+
+Use `Table` and its semantic section, row, header, and cell primitives for genuinely tabular data.
+
+- Provide a context-specific `scrollLabel` for the keyboard-focusable overflow region.
+- Use `align="end"` for numeric values and durations; it also enables tabular numerals.
+- Use `TableCellContent` for a common primary-plus-secondary text cell.
+- Keep row actions explicit and keyboard reachable; do not make the row itself impersonate a link.
+- Do not replace native table semantics with a grid of `div` elements.
 
 ### Badge
 
@@ -222,6 +242,16 @@ Badge tones are `neutral`, `primary`, `amber`, `success`, `danger`, and `outline
 ### Avatar
 
 Use `Avatar` with a required `name`; sizes are `sm`, `md`, and `lg`. Supply `src` and meaningful `alt` when an image conveys identity. Prefer semantic token values for `color` and `ink`.
+
+### Alert
+
+Use `Alert` for persistent inline feedback. Tones are `info`, `warning`, `success`, and `danger`.
+
+- Use `danger` for failures that need immediate attention; it uses `role="alert"`.
+- Use quieter tones for advisory state; they use `role="status"`.
+- Provide a concrete recovery control through `action` when the user can resolve the condition.
+- Do not use Alert for transient confirmation that is better handled by Toast.
+- Do not use Toast as the only record of a blocking error.
 
 ### Meter
 
