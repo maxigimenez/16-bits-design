@@ -20,13 +20,14 @@ for (const target of Object.values(manifest.exports)) {
 const esm = await import('@16-bits-design/ui');
 const esmAlert = await import('@16-bits-design/ui/alert');
 const esmCard = await import('@16-bits-design/ui/card');
+const esmCode = await import('@16-bits-design/ui/code');
 const esmTheme = await import('@16-bits-design/ui/theme');
 const esmEmptyState = await import('@16-bits-design/ui/empty-state');
 const esmSpinner = await import('@16-bits-design/ui/spinner');
 const esmSegmented = await import('@16-bits-design/ui/segmented');
 const esmTable = await import('@16-bits-design/ui/table');
 
-if (esm.Alert !== esmAlert.Alert || esm.Card !== esmCard.Card || esm.EmptyState !== esmEmptyState.EmptyState || esm.Segmented !== esmSegmented.Segmented || esm.Spinner !== esmSpinner.Spinner || esm.ThemeProvider !== esmTheme.ThemeProvider || esm.Table !== esmTable.Table) {
+if (esm.Alert !== esmAlert.Alert || esm.Card !== esmCard.Card || esm.Code !== esmCode.Code || esm.EmptyState !== esmEmptyState.EmptyState || esm.Segmented !== esmSegmented.Segmented || esm.Spinner !== esmSpinner.Spinner || esm.ThemeProvider !== esmTheme.ThemeProvider || esm.Table !== esmTable.Table) {
   throw new Error('ESM root exports do not resolve to the public component subpaths.');
 }
 
@@ -34,13 +35,14 @@ const require = createRequire(import.meta.url);
 const cjs = require('@16-bits-design/ui');
 const cjsAlert = require('@16-bits-design/ui/alert');
 const cjsCard = require('@16-bits-design/ui/card');
+const cjsCode = require('@16-bits-design/ui/code');
 const cjsTheme = require('@16-bits-design/ui/theme');
 const cjsEmptyState = require('@16-bits-design/ui/empty-state');
 const cjsSpinner = require('@16-bits-design/ui/spinner');
 const cjsSegmented = require('@16-bits-design/ui/segmented');
 const cjsTable = require('@16-bits-design/ui/table');
 
-if (cjs.Alert !== cjsAlert.Alert || cjs.Card !== cjsCard.Card || cjs.EmptyState !== cjsEmptyState.EmptyState || cjs.Segmented !== cjsSegmented.Segmented || cjs.Spinner !== cjsSpinner.Spinner || cjs.ThemeProvider !== cjsTheme.ThemeProvider || cjs.Table !== cjsTable.Table) {
+if (cjs.Alert !== cjsAlert.Alert || cjs.Card !== cjsCard.Card || cjs.Code !== cjsCode.Code || cjs.EmptyState !== cjsEmptyState.EmptyState || cjs.Segmented !== cjsSegmented.Segmented || cjs.Spinner !== cjsSpinner.Spinner || cjs.ThemeProvider !== cjsTheme.ThemeProvider || cjs.Table !== cjsTable.Table) {
   throw new Error('CommonJS root exports do not resolve to the public component subpaths.');
 }
 

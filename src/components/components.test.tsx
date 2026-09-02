@@ -6,6 +6,7 @@ import { Avatar } from './Avatar';
 import { Badge } from './Badge';
 import { Button } from './Button';
 import { Card, CardContent, CardTitle } from './Card';
+import { Code } from './Code';
 import { Dialog } from './Dialog';
 import { EmptyState } from './EmptyState';
 import { Input } from './Field';
@@ -90,6 +91,23 @@ describe('form controls', () => {
 });
 
 describe('display components', () => {
+  it('contains block code in a named keyboard-scrollable region', () => {
+    render(<Code label="Route definition">{'{\n  "method": "GET"\n}'}</Code>);
+    const region = screen.getByRole('region', { name: 'Route definition' });
+    expect(region.tagName).toBe('PRE');
+    expect(region).toHaveAttribute('tabindex', '0');
+    expect(region).toHaveClass('bits-code--block');
+    expect(region).toHaveTextContent('"method": "GET"');
+  });
+
+  it('renders short code without block-region semantics', () => {
+    render(<Code variant="inline" label="Deployment id">dpl_8f32c1</Code>);
+    const code = screen.getByLabelText('Deployment id');
+    expect(code.tagName).toBe('CODE');
+    expect(code).toHaveClass('bits-code--inline');
+    expect(screen.queryByRole('region')).not.toBeInTheDocument();
+  });
+
   it('renders an empty state with document-aware heading and action', () => {
     render(
       <EmptyState
