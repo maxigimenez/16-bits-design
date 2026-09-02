@@ -12,6 +12,7 @@ export default defineConfig({
     input: 'src/entries/input.ts',
     meter: 'src/entries/meter.ts',
     select: 'src/entries/select.ts',
+    spinner: 'src/entries/spinner.ts',
     segmented: 'src/entries/segmented.ts',
     table: 'src/entries/table.ts',
     textarea: 'src/entries/textarea.ts',

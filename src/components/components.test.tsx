@@ -10,6 +10,7 @@ import { Dialog } from './Dialog';
 import { Input } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
+import { Spinner } from './Spinner';
 import { Segmented } from './Segmented';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './Table';
 import { ToastProvider, useToast } from './Toast';
@@ -88,6 +89,21 @@ describe('form controls', () => {
 });
 
 describe('display components', () => {
+  it('announces indeterminate loading with a polite busy status', () => {
+    render(<Spinner label="Loading deployments" />);
+    const status = screen.getByRole('status');
+    expect(status).toHaveAccessibleName('');
+    expect(status).toHaveTextContent('Loading deployments');
+    expect(status).toHaveAttribute('aria-live', 'polite');
+    expect(status).toHaveAttribute('aria-busy', 'true');
+    expect(document.querySelector('.bits-spinner__track')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('keeps a hidden spinner label available to assistive technology', () => {
+    render(<Spinner label="Refreshing status" hideLabel />);
+    expect(screen.getByText('Refreshing status')).toHaveClass('bits-sr-only');
+  });
+
   it('announces danger alerts assertively and advisory alerts politely', () => {
     const { rerender } = render(<Alert tone="danger" title="Request failed">Try again.</Alert>);
     expect(screen.getByRole('alert')).toHaveTextContent('Request failedTry again.');

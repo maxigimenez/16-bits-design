@@ -261,6 +261,16 @@ Use `Meter` for bounded progress with `value`, optional `max`, `segments`, `tone
 - Do not use Meter for unbounded loading.
 - Do not rely on color alone to communicate success or failure.
 
+### Spinner
+
+Use `Spinner` for indeterminate loading when completion cannot be expressed as a bounded value.
+
+- Always provide a concise `label`; use `hideLabel` only when equivalent visible context is already present.
+- Use `sm`, `md`, or `lg` to match the surrounding density, not to imply progress.
+- Keep the loading region in place when practical so content does not jump when data arrives.
+- Use Meter for bounded progress; never animate a Meter toward an unknown finish.
+- Do not add a second live region around Spinner.
+
 ### Toast
 
 Use `ToastProvider` and `useToast` for transient feedback. Tones are `success`, `danger`, `warning`, and `info`.
