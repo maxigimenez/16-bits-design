@@ -1,16 +1,36 @@
 # 16 Bits Design
 
-A reusable, themeable React component library with a dark, pixel-sharp visual language. It combines square geometry, stepped motion, 2px borders, offset shadows, a high-contrast signal palette, JetBrains Mono body type, and Silkscreen display type.
+**Pixel-sharp React UI for interfaces that need signal, not softness.**
 
-## Install
+16 Bits Design is a themeable, accessible component library built around square
+geometry, solid surfaces, stepped motion, crisp borders, and deliberate contrast.
+It ships as one package with no runtime styling dependency.
 
-Install one package:
+![Ember and Ocean component atlas](https://raw.githubusercontent.com/maxigimenez/16-bits-design/main/docs/readme-component-atlas.jpg)
+
+## Why 16 Bits?
+
+- **A complete visual system.** Components, semantic tokens, typography, themes,
+  focus treatment, and interaction states are designed together.
+- **Distinct without decoration overload.** Zero-radius controls, 2px borders,
+  offset shadows, and pixel-display headings create character while content stays clear.
+- **Accessible by default.** Semantic HTML, visible keyboard focus, labelled loading
+  states, reduced-motion behavior, and purpose-built dialog and listbox interactions.
+- **Easy to adopt.** One package, one stylesheet, focused ESM/CJS entry points, and
+  TypeScript declarations for every public component.
+- **Themeable at any scope.** Use the built-in Ember and Ocean themes or override
+  semantic `--bits-*` variables with plain CSS.
+
+## Quick start
+
+Install the package:
 
 ```sh
 pnpm add @16-bits-design/ui
 ```
 
-Import the stylesheet once at your application entry point, then import components from the root barrel or focused subpaths:
+Import the stylesheet once at your application entry point, then use focused
+component entry points:
 
 ```tsx
 import '@16-bits-design/ui/styles.css';
@@ -22,45 +42,46 @@ export function App() {
   return (
     <ThemeProvider theme="ocean">
       <Card accent>
-        <CardHeader><CardTitle>Ready</CardTitle></CardHeader>
-        <CardContent><Button>Create route</Button></CardContent>
+        <CardHeader>
+          <CardTitle>Ready to deploy</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Button>Create release</Button>
+        </CardContent>
       </Card>
     </ThemeProvider>
   );
 }
 ```
 
-The root barrel is available when a consolidated import is preferable:
+The root barrel is also available when a consolidated import is clearer:
 
 ```tsx
 import { Button, Card, ThemeProvider } from '@16-bits-design/ui';
 ```
 
-All JavaScript entry points ship ESM, CommonJS, and TypeScript declarations. Explicit component subpaths keep the public API stable and allow consumers to include only the component modules they use.
+All JavaScript entry points ship as ESM and CommonJS with TypeScript declarations.
 
-## Public entry points
+## Components
 
-- `@16-bits-design/ui`
-- `@16-bits-design/ui/alert`
-- `@16-bits-design/ui/avatar`
-- `@16-bits-design/ui/badge`
-- `@16-bits-design/ui/button`
-- `@16-bits-design/ui/card`
-- `@16-bits-design/ui/code`
-- `@16-bits-design/ui/dialog`
-- `@16-bits-design/ui/empty-state`
-- `@16-bits-design/ui/input`
-- `@16-bits-design/ui/meter`
-- `@16-bits-design/ui/select`
-- `@16-bits-design/ui/spinner`
-- `@16-bits-design/ui/segmented`
-- `@16-bits-design/ui/table`
-- `@16-bits-design/ui/textarea`
-- `@16-bits-design/ui/theme`
-- `@16-bits-design/ui/toast`
-- `@16-bits-design/ui/toggle`
-- `@16-bits-design/ui/typography`
-- `@16-bits-design/ui/styles.css`
+| Category | Components |
+| --- | --- |
+| Actions | `Button` |
+| Data entry | `Input`, `Textarea`, `Select`, `Segmented`, `Toggle` |
+| Feedback | `Alert`, `Toast`, `Dialog`, `EmptyState`, `Spinner`, `Meter` |
+| Content | `Card`, `Code`, `Table`, `Badge`, `Avatar`, `Heading`, `Text` |
+| System | `ThemeProvider`, semantic tokens, bundled fonts and styles |
+
+Every component has a focused entry point following the same pattern:
+
+```tsx
+import { Alert } from '@16-bits-design/ui/alert';
+import { Input } from '@16-bits-design/ui/input';
+import { Table } from '@16-bits-design/ui/table';
+```
+
+The root package and `styles.css` are available at `@16-bits-design/ui` and
+`@16-bits-design/ui/styles.css`.
 
 ### Code
 
