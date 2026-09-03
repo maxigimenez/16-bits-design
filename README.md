@@ -6,7 +6,7 @@
 geometry, solid surfaces, stepped motion, crisp borders, and deliberate contrast.
 It ships as one package with no runtime styling dependency.
 
-![Ember and Ocean component atlas](https://raw.githubusercontent.com/maxigimenez/16-bits-design/main/docs/readme-component-atlas.jpg)
+![Ember and Ocean component atlas](https://raw.githubusercontent.com/maxigimenez/16-bits-design/main/docs/readme-component-atlas.png)
 
 ## Why 16 Bits?
 
