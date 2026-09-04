@@ -130,6 +130,31 @@ a stable selector or application state value:
   </tbody>
 </table>
 
+## Component color overrides
+
+Component-level variables are optional. They inherit through a theme container and
+let a design tune a component without depending on its private class names.
+
+<table>
+  <thead>
+    <tr><th>Variable</th><th>Purpose</th><th>Fallback</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--bits-alert-surface</code></td><td>Alert background fill</td><td><code>--bits-raised</code>, or a tone-derived wash for subtle alerts</td></tr>
+    <tr><td><code>--bits-alert-border</code></td><td>Alert border color</td><td>The alert tone, or a weakened tone mix for subtle alerts</td></tr>
+  </tbody>
+</table>
+
+For example, a theme with authored danger-zone values can set both variables on a
+container. The same Alert API and markup remain unchanged:
+
+```css
+.brand-danger-zone {
+  --bits-alert-surface: #170d0b;
+  --bits-alert-border: #4a231c;
+}
+```
+
 Keep text/background and interactive-state combinations accessible. In particular,
 check `--bits-ink` on `--bits-primary`, all text levels on surfaces, and focus rings.
 

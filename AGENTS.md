@@ -256,10 +256,13 @@ Use `Avatar` with a required `name`; sizes are `sm`, `md`, and `lg`. Supply `src
 
 ### Alert
 
-Use `Alert` for persistent inline feedback. Tones are `info`, `warning`, `success`, and `danger`.
+Use `Alert` for persistent inline feedback. Tones are `info`, `warning`, `success`, and `danger`; variants are `default` and `subtle`.
 
 - Use `danger` for failures that need immediate attention; it uses `role="alert"`.
+- Use `subtle` for persistent advisory regions such as danger zones that should communicate meaning without competing with current content. Subtle alerts use `role="status"` unless `role` is set explicitly.
 - Use quieter tones for advisory state; they use `role="status"`.
+- Theme alert fills and borders with `--bits-alert-surface` and `--bits-alert-border`; do not target private `.bits-alert-*` selectors.
+- Pass `icon={null}` when the alert should have no marker. Subtle alerts otherwise use a compact, glyph-free marker by default.
 - Provide a concrete recovery control through `action` when the user can resolve the condition.
 - Do not use Alert for transient confirmation that is better handled by Toast.
 - Do not use Toast as the only record of a blocking error.
