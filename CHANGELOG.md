@@ -5,6 +5,17 @@ All notable changes to this package are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+
+- Dialog block content, compact and medium sizes, and disabled/loading confirmation states for short form workflows.
+
+### Changed
+
+- Dialog focus trapping now includes native select, textarea, editable, and explicitly tabbable controls.
+- An open Select consumes Escape before a containing dialog closes.
+
 ## 0.2.0 - 2026-09-02
 
 ### Added

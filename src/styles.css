@@ -441,21 +441,30 @@
 
 .bits-dialog { position: fixed; z-index: 900; inset: 0; display: flex; align-items: center; justify-content: center; padding: 40px 20px; font-family: var(--bits-font-body); }
 .bits-dialog__backdrop { position: absolute; inset: 0; border: 0; background: var(--bits-backdrop); cursor: default; }
-.bits-dialog__panel { position: relative; width: min(372px, 100%); border: var(--bits-border-width) solid var(--bits-line); background: var(--bits-panel); box-shadow: 8px 8px 0 var(--bits-shadow); color: var(--bits-text); animation: bits-drop 160ms steps(3) 1; }
-.bits-dialog__tone { height: 4px; background: var(--dialog-tone); }
-.bits-dialog__body { display: flex; flex-direction: column; gap: 14px; padding: 20px 20px 18px; }
+.bits-dialog__panel { position: relative; display: flex; flex-direction: column; max-height: calc(100vh - 80px); max-height: calc(100dvh - 80px); border: var(--bits-border-width) solid var(--bits-line); background: var(--bits-panel); box-shadow: 8px 8px 0 var(--bits-shadow); color: var(--bits-text); animation: bits-drop 160ms steps(3) 1; }
+.bits-dialog__panel--sm { width: min(372px, 100%); }
+.bits-dialog__panel--md { width: min(560px, 100%); }
+.bits-dialog__tone { flex: none; height: 4px; background: var(--dialog-tone); }
+.bits-dialog__body { display: flex; flex-direction: column; gap: 14px; min-height: 0; padding: 20px 20px 18px; overflow-y: auto; }
 .bits-dialog__header { display: flex; align-items: center; gap: 11px; }
 .bits-dialog__icon { flex: none; width: 22px; height: 22px; background: var(--dialog-tone); color: var(--bits-ink); font: 400 11px/22px var(--bits-font-display); text-align: center; }
 .bits-dialog__title { flex: 1; margin: 0; color: var(--bits-text); font: 400 13px/1.3 var(--bits-font-display); }
 .bits-dialog__description { margin: 0; color: var(--bits-text-muted); font-size: 11px; line-height: 1.7; }
+.bits-dialog__content { display: flex; flex-direction: column; gap: var(--bits-space-4); min-width: 0; color: var(--bits-text-soft); font-size: var(--bits-font-size-body); line-height: 1.6; }
 .bits-dialog__meta { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: var(--bits-border-width) solid var(--bits-line); background: var(--bits-surface); color: var(--bits-primary-soft); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bits-dialog__meta::before { content: ''; flex: none; width: 8px; height: 8px; background: var(--dialog-tone); }
 .bits-dialog__close { flex: none; padding: 4px; border: 0; background: transparent; color: var(--bits-text-faint); font: 400 11px/1 var(--bits-font-body); cursor: pointer; transition: transform 100ms steps(2), color 120ms linear; }
 .bits-dialog__close:hover { color: var(--bits-text); }
 .bits-dialog__close:active { transform: translate(1px, 1px); }
-.bits-dialog__footer { display: flex; align-items: center; justify-content: flex-end; gap: 9px; padding: 13px 20px; border-top: var(--bits-border-width) solid var(--bits-line); }
+.bits-dialog__footer { display: flex; align-items: center; justify-content: flex-end; flex: none; gap: 9px; padding: 13px 20px; border-top: var(--bits-border-width) solid var(--bits-line); }
 .bits-dialog--primary { --dialog-tone: var(--bits-primary); }
 .bits-dialog--danger { --dialog-tone: var(--bits-danger); }
 .bits-dialog--danger .bits-dialog__footer .bits-button--danger { background: var(--bits-danger); color: var(--bits-ink); box-shadow: 3px 3px 0 var(--bits-danger-shadow); }
 .bits-dialog--danger .bits-dialog__footer .bits-button--danger:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--bits-danger-shadow); }
 .bits-dialog--danger .bits-dialog__footer .bits-button--danger:active:not(:disabled) { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--bits-danger-shadow); }
+@media (max-width: 480px) {
+  .bits-dialog { align-items: flex-start; padding: var(--bits-space-5) var(--bits-space-4); }
+  .bits-dialog__panel { max-height: calc(100vh - (2 * var(--bits-space-5))); max-height: calc(100dvh - (2 * var(--bits-space-5))); }
+  .bits-dialog__footer { align-items: stretch; flex-direction: column; }
+  .bits-dialog__footer .bits-button { width: 100%; }
+}

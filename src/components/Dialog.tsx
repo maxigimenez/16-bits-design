@@ -6,6 +6,7 @@ import { Button } from './Button';
 import { cn } from '../lib/cn';
 
 export type DialogTone = 'primary' | 'danger';
+export type DialogSize = 'sm' | 'md';
 
 export interface DialogProps {
   open: boolean;
@@ -13,9 +14,14 @@ export interface DialogProps {
   title: ReactNode;
   description?: ReactNode;
   meta?: ReactNode;
+  children?: ReactNode;
   icon?: ReactNode;
   tone?: DialogTone;
+  size?: DialogSize;
   confirmLabel?: ReactNode;
+  confirmDisabled?: boolean;
+  confirmLoading?: boolean;
+  confirmLoadingLabel?: string;
   cancelLabel?: ReactNode;
   onConfirm?: () => void;
   closeOnConfirm?: boolean;
@@ -30,9 +36,14 @@ export function Dialog({
   title,
   description,
   meta,
+  children,
   icon,
   tone = 'primary',
+  size = 'sm',
   confirmLabel = 'Confirm',
+  confirmDisabled = false,
+  confirmLoading = false,
+  confirmLoadingLabel,
   cancelLabel = 'Cancel',
   onConfirm,
   closeOnConfirm = true,
@@ -54,9 +65,17 @@ export function Dialog({
     panelRef.current?.querySelector<HTMLButtonElement>('button')?.focus();
 
     const onKeyDown = (event: globalThis.KeyboardEvent) => {
-      if (event.key === 'Escape') onOpenChange(false);
+      if (event.key === 'Escape' && !event.defaultPrevented) onOpenChange(false);
       if (event.key !== 'Tab' || !panelRef.current) return;
-      const focusable = Array.from(panelRef.current.querySelectorAll<HTMLElement>('button:not(:disabled), [href], input:not(:disabled), [tabindex]:not([tabindex="-1"])'));
+      const focusable = Array.from(panelRef.current.querySelectorAll<HTMLElement>([
+        'a[href]:not([hidden])',
+        'button:not(:disabled):not([hidden])',
+        'input:not(:disabled):not([type="hidden"]):not([hidden])',
+        'select:not(:disabled):not([hidden])',
+        'textarea:not(:disabled):not([hidden])',
+        '[contenteditable="true"]:not([hidden])',
+        '[tabindex]:not([tabindex="-1"]):not(:disabled):not([hidden])',
+      ].join(', ')));
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -95,7 +114,7 @@ export function Dialog({
       />
       <div
         ref={panelRef}
-        className={cn('bits-dialog__panel', className)}
+        className={cn('bits-dialog__panel', `bits-dialog__panel--${size}`, className)}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
@@ -110,11 +129,15 @@ export function Dialog({
           </div>
           {description && <p id={descriptionId} className="bits-dialog__description">{description}</p>}
           {meta && <div className="bits-dialog__meta">{meta}</div>}
+          {children != null && <div className="bits-dialog__content">{children}</div>}
         </div>
         <div className="bits-dialog__footer">
           <Button variant="secondary" onClick={() => onOpenChange(false)}>{cancelLabel}</Button>
           <Button
             variant={tone === 'danger' ? 'danger' : 'primary'}
+            disabled={confirmDisabled}
+            loading={confirmLoading}
+            loadingLabel={confirmLoadingLabel}
             onClick={() => {
               onConfirm?.();
               if (closeOnConfirm) onOpenChange(false);

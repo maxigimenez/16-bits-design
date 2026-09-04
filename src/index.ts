@@ -17,7 +17,7 @@ export { Code } from '@16-bits-design/ui/code';
 export type { CodeBlockProps, CodeInlineProps, CodeProps, CodeVariant } from '@16-bits-design/ui/code';
 
 export { Dialog } from '@16-bits-design/ui/dialog';
-export type { DialogProps, DialogTone } from '@16-bits-design/ui/dialog';
+export type { DialogProps, DialogSize, DialogTone } from '@16-bits-design/ui/dialog';
 
 export { EmptyState } from '@16-bits-design/ui/empty-state';
 export type { EmptyStateHeadingLevel, EmptyStateProps } from '@16-bits-design/ui/empty-state';

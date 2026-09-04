@@ -100,6 +100,9 @@ export function Select({
       event.preventDefault();
       setActiveIndex(findEnabledOption(options, -1));
     } else if (event.key === 'Escape') {
+      if (!open) return;
+      event.preventDefault();
+      event.stopPropagation();
       setOpen(false);
     }
   };

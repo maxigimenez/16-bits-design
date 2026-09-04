@@ -122,6 +122,40 @@ import { Spinner } from '@16-bits-design/ui/spinner';
 <Spinner label="Loading deployments" />
 ```
 
+### Dialog
+
+Use `Dialog` for focused confirmation or short form workflows. Pass prose through
+`description` so it remains the dialog's accessible description, and pass fields
+through `children` so they render in a block body. `size="md"` provides room for
+forms while the default `sm` size keeps confirmations compact.
+
+```tsx
+import { Dialog } from '@16-bits-design/ui/dialog';
+import { Select } from '@16-bits-design/ui/select';
+import { Textarea } from '@16-bits-design/ui/textarea';
+
+<Dialog
+  open={open}
+  onOpenChange={setOpen}
+  title="Run an agent"
+  description="Choose an agent and describe the work."
+  size="md"
+  confirmLabel="Start run"
+  confirmDisabled={!agent || !prompt}
+  confirmLoading={starting}
+  confirmLoadingLabel="Starting run"
+  closeOnConfirm={false}
+  onConfirm={startRun}
+>
+  <Select label="Agent" options={agents} value={agent} onValueChange={setAgent} />
+  <Textarea label="Prompt" value={prompt} onChange={updatePrompt} />
+</Dialog>
+```
+
+The focus trap includes links, buttons, inputs, native selects, textareas,
+editable content, and explicitly tabbable elements. An open `Select` consumes
+Escape first; a second Escape closes the dialog.
+
 ### Segmented
 
 Use `Segmented` for a small set of mutually exclusive filters or views that apply immediately. Each option is an individually Tab-reachable button with `aria-pressed`; the component supports controlled and uncontrolled state.

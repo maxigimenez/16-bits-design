@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import { readFileSync } from 'node:fs';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import { Card, CardContent, CardTitle } from './Card';
 import { Code } from './Code';
 import { Dialog } from './Dialog';
 import { EmptyState } from './EmptyState';
-import { Input } from './Field';
+import { Input, Textarea } from './Field';
 import { Meter } from './Meter';
 import { Select } from './Select';
 import { Spinner } from './Spinner';
@@ -243,6 +243,89 @@ describe('overlays', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     await user.keyboard('{Escape}');
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  });
+
+  it('renders form content in a block body without changing the accessible description', () => {
+    render(
+      <Dialog
+        open
+        onOpenChange={() => undefined}
+        title="Run an agent"
+        description="Choose an agent and describe the work."
+        size="md"
+        confirmDisabled
+      >
+        <Textarea label="Prompt" />
+      </Dialog>,
+    );
+
+    const dialog = screen.getByRole('dialog');
+    const description = screen.getByText('Choose an agent and describe the work.');
+    const prompt = screen.getByLabelText('Prompt');
+
+    expect(dialog).toHaveAccessibleDescription('Choose an agent and describe the work.');
+    expect(description.tagName).toBe('P');
+    expect(description).not.toContainElement(prompt);
+    expect(prompt.closest('.bits-dialog__content')).toBeInTheDocument();
+    expect(dialog).toHaveClass('bits-dialog__panel--md');
+    expect(screen.getByRole('button', { name: 'Confirm' })).toBeDisabled();
+  });
+
+  it('keeps native form controls in the dialog tab order and traps focus', async () => {
+    const user = userEvent.setup();
+    render(
+      <Dialog open onOpenChange={() => undefined} title="Edit route">
+        <textarea aria-label="Prompt" />
+        <select aria-label="Runner"><option>Local</option></select>
+      </Dialog>,
+    );
+
+    const dialog = screen.getByRole('dialog');
+    const closeButton = within(dialog).getByRole('button', { name: 'Close dialog' });
+
+    expect(closeButton).toHaveFocus();
+    await user.tab();
+    expect(screen.getByRole('textbox', { name: 'Prompt' })).toHaveFocus();
+    await user.tab();
+    expect(screen.getByRole('combobox', { name: 'Runner' })).toHaveFocus();
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Cancel' })).toHaveFocus();
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Confirm' })).toHaveFocus();
+    await user.tab();
+    expect(closeButton).toHaveFocus();
+  });
+
+  it('passes loading state and its accessible label to the confirm button', () => {
+    render(
+      <Dialog
+        open
+        onOpenChange={() => undefined}
+        title="Run an agent"
+        confirmLabel="Start run"
+        confirmLoading
+        confirmLoadingLabel="Starting run"
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: 'Starting run' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Starting run' })).toHaveAttribute('aria-busy', 'true');
+  });
+
+  it('lets an open select consume Escape before the dialog', async () => {
+    const user = userEvent.setup();
+    const onOpenChange = vi.fn();
+    render(
+      <Dialog open onOpenChange={onOpenChange} title="Run an agent">
+        <Select label="Agent" options={[{ value: 'builder', label: 'Builder' }]} />
+      </Dialog>,
+    );
+
+    await user.click(screen.getByRole('button', { name: /select an option/i }));
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(onOpenChange).not.toHaveBeenCalled();
   });
 
   it('carries a custom theme into portalled UI', async () => {
