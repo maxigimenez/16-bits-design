@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitHub Issue Workflow"
+  short_description: "Triage GitHub issues and deliver verified PRs"
+  default_prompt: "Use $github-issue-workflow to pick the best actionable open GitHub issue in this repository and carry it through to a review-ready pull request."
+
+policy:
+  allow_implicit_invocation: true
