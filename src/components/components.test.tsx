@@ -162,6 +162,23 @@ describe('display components', () => {
     expect(screen.getByRole('button', { name: 'Retry request' })).toBeEnabled();
   });
 
+  it('renders subtle alerts with a compact marker and advisory semantics', () => {
+    render(<Alert variant="subtle" tone="danger" title="Danger zone">Destructive controls follow.</Alert>);
+
+    const alert = screen.getByRole('status');
+    expect(alert).toHaveClass('bits-alert--subtle', 'bits-alert--danger');
+    expect(alert.querySelector('.bits-alert__icon--marker')).toBeEmptyDOMElement();
+    expect(stylesheet).toContain('var(--bits-alert-border, var(--bits-alert-tone))');
+    expect(stylesheet).toContain('var(--bits-alert-surface, var(--bits-raised))');
+    expect(stylesheet).toContain('var(--bits-alert-border, color-mix');
+    expect(stylesheet).toContain('var(--bits-alert-surface, color-mix');
+  });
+
+  it('allows an alert marker to be omitted explicitly', () => {
+    render(<Alert icon={null} title="No marker">Message.</Alert>);
+    expect(screen.getByRole('status').querySelector('.bits-alert__icon')).not.toBeInTheDocument();
+  });
+
   it('exposes only live Ember and Ocean theme tokens', () => {
     expect(builtInThemes).toEqual(['ember', 'ocean']);
     expect(colors.primary).toBe('var(--bits-primary)');

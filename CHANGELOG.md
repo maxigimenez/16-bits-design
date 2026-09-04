@@ -10,11 +10,13 @@ this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 - Dialog block content, compact and medium sizes, and disabled/loading confirmation states for short form workflows.
+- A subtle Alert variant with derived low-emphasis surfaces, borders, and compact markers.
 
 ### Changed
 
 - Dialog focus trapping now includes native select, textarea, editable, and explicitly tabbable controls.
 - An open Select consumes Escape before a containing dialog closes.
+- Alert surfaces and borders can be themed through `--bits-alert-surface` and `--bits-alert-border`.
 
 ## 0.2.0 - 2026-09-02
 

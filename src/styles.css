@@ -362,8 +362,9 @@
 .bits-badge--danger { background: var(--bits-danger); }
 .bits-badge--outline { border: var(--bits-border-width) solid currentColor; background: transparent; color: var(--bits-text-muted); }
 
-.bits-alert { --bits-alert-tone: var(--bits-primary); display: flex; align-items: flex-start; gap: var(--bits-space-3); width: 100%; padding: var(--bits-space-3); border: var(--bits-border-width) solid var(--bits-alert-tone); background: var(--bits-raised); color: var(--bits-text); font-family: var(--bits-font-body); }
+.bits-alert { --bits-alert-tone: var(--bits-primary); display: flex; align-items: flex-start; gap: var(--bits-space-3); width: 100%; padding: var(--bits-space-3); border: var(--bits-border-width) solid var(--bits-alert-border, var(--bits-alert-tone)); background: var(--bits-alert-surface, var(--bits-raised)); color: var(--bits-text); font-family: var(--bits-font-body); }
 .bits-alert__icon { display: flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; background: var(--bits-alert-tone); color: var(--bits-ink); font: 400 10px/1 var(--bits-font-display); }
+.bits-alert__icon--marker { width: 12px; height: 12px; margin-top: 2px; }
 .bits-alert__content { display: flex; align-items: center; justify-content: space-between; gap: var(--bits-space-4); flex: 1; min-width: 0; }
 .bits-alert__copy { display: flex; flex-direction: column; gap: var(--bits-space-1); min-width: 0; }
 .bits-alert__title { color: var(--bits-text); font-size: var(--bits-font-size-small); font-weight: 700; line-height: 1.45; }
@@ -373,6 +374,7 @@
 .bits-alert--warning { --bits-alert-tone: var(--bits-amber); }
 .bits-alert--success { --bits-alert-tone: var(--bits-success); }
 .bits-alert--danger { --bits-alert-tone: var(--bits-danger); }
+.bits-alert--subtle { border-color: var(--bits-alert-border, color-mix(in srgb, var(--bits-alert-tone) 30%, var(--bits-surface))); background: var(--bits-alert-surface, color-mix(in srgb, var(--bits-alert-tone) 8%, var(--bits-surface))); }
 @media (max-width: 480px) {
   .bits-alert__content { align-items: flex-start; flex-direction: column; }
   .bits-alert__action { width: 100%; }

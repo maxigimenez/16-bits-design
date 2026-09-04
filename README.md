@@ -177,20 +177,29 @@ import { Segmented } from '@16-bits-design/ui/segmented';
 
 ### Alert
 
-Use `Alert` for persistent inline feedback that must remain available in the page. Danger alerts use `role="alert"`; info, warning, and success alerts use the quieter `role="status"`. Actions remain explicit composable controls.
+Use `Alert` for persistent inline feedback that must remain available in the page.
+The default variant uses a strong tone border for events that need attention now;
+use `variant="subtle"` for persistent advisory regions such as a danger zone.
+Subtle alerts use a compact marker and the quieter `role="status"`, including for
+the danger tone. Actions remain explicit composable controls.
 
 ```tsx
 import { Alert } from '@16-bits-design/ui/alert';
 import { Button } from '@16-bits-design/ui/button';
 
 <Alert
+  variant="subtle"
   tone="danger"
-  title="Could not load deployments"
-  action={<Button size="sm">Retry</Button>}
+  title="Delete this organization"
+  action={<Button size="sm" variant="danger">Delete organization</Button>}
 >
-  The service returned an unexpected response.
+  Permanently removes the organization and all of its projects.
 </Alert>
 ```
+
+The derived subtle colors follow the active tone and theme. A theme can provide
+exact authored values through `--bits-alert-surface` and `--bits-alert-border`
+without targeting component classes. Pass `icon={null}` to omit the marker.
 
 ### Table
 
